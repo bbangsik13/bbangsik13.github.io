@@ -6,6 +6,7 @@ papers:
     code: "https://github.com/hyunji12/Open3DR"
     venue: "arXiv preprint"
     selected: y
+    image: "/assets/publications/Open3DRF_preview.png"
 
   - title: "Per-Gaussian Embedding based Deformation for Deformable 3D Gaussian Splatting"
     authors: "Jeongmin Bae<sup>‡</sup>, Seoha Kim<sup>‡</sup>, <b>Youngsik Yun</b>, Hahyun Lee, Gun Bang, Youngjung Uh"
@@ -14,6 +15,7 @@ papers:
     code: "https://github.com/JeongminB/E-D3DGS"
     venue: "ECCV 2024"
     selected: y
+    image: "/assets/publications/e-d3dgs_preview.png"
 
   - title: "Sync-NeRF: Generalizing Dynamic NeRFs to Unsynchronized Videos"
     authors: "Seoha Kim<sup>‡</sup>, Jeongmin Bae<sup>‡</sup>, <b>Youngsik Yun</b>, Hahyun Lee, Gun Bang, Youngjung Uh"
@@ -23,9 +25,11 @@ papers:
     data: "http://drive.google.com/drive/folders/1wvLtucVrmFf7fj-kWr-HMk3boaI46cIX?usp=sharing"
     venue: "AAAI 2024"
     selected: y
+    image: "/assets/publications/sync-nerf_preview.png"
 
   - title: "Dense-Pose2SMPL: 3D Human Body Shape Estimation From a Single and Multiple Images and Its Performance Study"
     authors: "Dongjun Gu, <b>Youngsik Yun</b>, Thai Thanh Tuan, Heejune Ahn"
     paper_pdf: "https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9831448"
     venue: "IEEE Access 2022"
     selected: y
+    image: "/assets/publications/densepose2smpl_preview.png"
