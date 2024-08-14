@@ -1,0 +1,19 @@
+experiences:
+
+- place: "ETRI"
+  time: "2023.05 - Present"
+  title: "Academic-Research Cooperation"
+  subtitle: "Dynamic Scene Reconstruction Research"
+  category: "work"
+
+- place: "Yonsei University"
+  time: "2023 – "
+  title: "Ph.D Student"
+  subtitle: "Artificial Intelligence"
+  category: "school"
+
+- place: "Seoul National University of Science and Technology"
+  time: "2019 - 2023"
+  title: "B.S. Student"
+  subtitle: "Electrical and Information Engineering"
+  category: "school"

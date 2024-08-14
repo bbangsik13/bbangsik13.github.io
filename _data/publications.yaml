@@ -1,0 +1,31 @@
+papers:
+  - title: "Rethinking Open-Vocabulary Segmentation of Radiance Fields in 3D Space"
+    authors: "Hyunjee Lee<sup>‡</sup>, <b>Youngsik Yun<sup>‡</sup></b>, Jeongmin Bae, Seoha Kim, Youngjung Uh"
+    paper_pdf: #"https://arxiv.org/abs/2404.03613"
+    project: "https://hyunji12.github.io/Open3DRF"
+    code: "https://github.com/hyunji12/Open3DR"
+    venue: "arXiv preprint"
+    selected: y
+
+  - title: "Per-Gaussian Embedding based Deformation for Deformable 3D Gaussian Splatting"
+    authors: "Jeongmin Bae<sup>‡</sup>, Seoha Kim<sup>‡</sup>, <b>Youngsik Yun</b>, Hahyun Lee, Gun Bang, Youngjung Uh"
+    paper_pdf: "https://arxiv.org/abs/2404.03613"
+    project: "https://JeongminB.github.io/e-d3dgs"
+    code: "https://github.com/JeongminB/E-D3DGS"
+    venue: "ECCV 2024"
+    selected: y
+
+  - title: "Sync-NeRF: Generalizing Dynamic NeRFs to Unsynchronized Videos"
+    authors: "Seoha Kim<sup>‡</sup>, Jeongmin Bae<sup>‡</sup>, <b>Youngsik Yun</b>, Hahyun Lee, Gun Bang, Youngjung Uh"
+    paper_pdf: "https://arxiv.org/abs/2310.13356.pdf"
+    project: "https://seoha-kim.github.io/sync-nerf"
+    code: "https://github.com/seoha-kim/Sync-NeRF"
+    data: "http://drive.google.com/drive/folders/1wvLtucVrmFf7fj-kWr-HMk3boaI46cIX?usp=sharing"
+    venue: "AAAI 2024"
+    selected: y
+
+  - title: "Dense-Pose2SMPL: 3D Human Body Shape Estimation From a Single and Multiple Images and Its Performance Study"
+    authors: "Dongjun Gu, <b>Youngsik Yun</b>, Thai Thanh Tuan, Heejune Ahn"
+    paper_pdf: "https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9831448"
+    venue: "IEEE Access 2022"
+    selected: y
