@@ -1,7 +1,7 @@
 papers:
   - title: "Rethinking Open-Vocabulary Segmentation of Radiance Fields in 3D Space"
     authors: "Hyunjee Lee<sup>‡</sup>, <b>Youngsik Yun<sup>‡</sup></b>, Jeongmin Bae, Seoha Kim, Youngjung Uh"
-    paper_pdf: #"https://arxiv.org/abs/2404.03613"
+    paper_pdf: "https://arxiv.org/abs/2408.07416"
     project: "https://hyunji12.github.io/Open3DRF"
     code: "https://github.com/hyunji12/Open3DR"
     venue: "arXiv preprint"
