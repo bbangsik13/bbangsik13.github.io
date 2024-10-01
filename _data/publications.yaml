@@ -1,6 +1,6 @@
 papers:
   - title: "Optimizing Dynamic NeRF and 3DGS with No Video Synchronization"
-    authors: "Seoha Kim<sup>‡</sup>, <b>Jeongmin Bae</b><sup>‡</sup>, Youngsik Yun, Hahyun Lee, Gun Bang, Youngjung Uh"
+    authors: "Seoha Kim<sup>‡</sup>, Jeongmin Bae<sup>‡</sup>, <b>Youngsik Yun</b>, Hahyun Lee, Gun Bang, Youngjung Uh"
     paper_pdf: "https://openreview.net/forum?id=RQutkn4V9I"
     # project: "https://seoha-kim.github.io/sync-nerf"
     # code: "https://github.com/seoha-kim/Sync-NeRF"
