@@ -1,6 +1,6 @@
 papers:
   - title: "Optimizing Dynamic NeRF and 3DGS with No Video Synchronization"
-    authors: "Seoha Kim<sup>‡</sup>, Jeongmin Bae<sup>‡</sup>, <b>Youngsik Yun</b>, Hahyun Lee, Gun Bang, Youngjung Uh"
+    authors: "Seoha Kim<sup>*</sup>, Jeongmin Bae<sup>*</sup>, <b>Youngsik Yun</b>, Hahyun Lee, Gun Bang, Youngjung Uh<sup>†</sup>"
     paper_pdf: "https://openreview.net/forum?id=RQutkn4V9I"
     # project: "https://seoha-kim.github.io/sync-nerf"
     # code: "https://github.com/seoha-kim/Sync-NeRF"
@@ -9,7 +9,7 @@ papers:
     image: "/assets/publications/sync-4drf_preview.jpg"
     
   - title: "Rethinking Open-Vocabulary Segmentation of Radiance Fields in 3D Space"
-    authors: "Hyunjee Lee<sup>‡</sup>, <b>Youngsik Yun<sup>‡</sup></b>, Jeongmin Bae, Seoha Kim, Youngjung Uh"
+    authors: "Hyunjee Lee<sup>*</sup>, <b>Youngsik Yun<sup>*</sup></b>, Jeongmin Bae, Seoha Kim, Youngjung Uh<sup>†</sup>"
     paper_pdf: "https://arxiv.org/abs/2408.07416"
     project: "https://hyunji12.github.io/Open3DRF"
     code: "https://github.com/hyunji12/Open3DR"
@@ -18,7 +18,7 @@ papers:
     image: "/assets/publications/Open3DRF_preview.png"
 
   - title: "Per-Gaussian Embedding based Deformation for Deformable 3D Gaussian Splatting"
-    authors: "Jeongmin Bae<sup>‡</sup>, Seoha Kim<sup>‡</sup>, <b>Youngsik Yun</b>, Hahyun Lee, Gun Bang, Youngjung Uh"
+    authors: "Jeongmin Bae<sup>*</sup>, Seoha Kim<sup>*</sup>, <b>Youngsik Yun</b>, Hahyun Lee, Gun Bang, Youngjung Uh<sup>†</sup>"
     paper_pdf: "https://arxiv.org/abs/2404.03613"
     project: "https://JeongminB.github.io/e-d3dgs"
     code: "https://github.com/JeongminB/E-D3DGS"
@@ -27,7 +27,7 @@ papers:
     image: "/assets/publications/e-d3dgs_preview.png"
 
   - title: "Sync-NeRF: Generalizing Dynamic NeRFs to Unsynchronized Videos"
-    authors: "Seoha Kim<sup>‡</sup>, Jeongmin Bae<sup>‡</sup>, <b>Youngsik Yun</b>, Hahyun Lee, Gun Bang, Youngjung Uh"
+    authors: "Seoha Kim<sup>*</sup>, Jeongmin Bae<sup>*</sup>, <b>Youngsik Yun</b>, Hahyun Lee, Gun Bang, Youngjung Uh<sup>†</sup>"
     paper_pdf: "https://arxiv.org/abs/2310.13356.pdf"
     project: "https://seoha-kim.github.io/sync-nerf"
     code: "https://github.com/seoha-kim/Sync-NeRF"
