@@ -173,6 +173,7 @@
         </div>
       </div>
     </div>
+
     <div class="container is-max-desktop">
       <h3 class="title is-4 has-text-centered">MeetRoom Dataset</h3>
       <h4 class="title is-6 has-text-centered"><u>Please note that all the baselines fails in this dataset.</u></h4>
@@ -190,15 +191,15 @@
               <canvas id="xyalias8Merge"></canvas>
             </div>
           </div> 
-            <div class="swiper-slide">
-              <div class="video-container">
+          <div class="swiper-slide">
+            <div class="video-container">
               <video class="video" id="xyalias9" autoplay loop playsinline muted data-src="./template/resources/trimming_HiCoM.mp4"></video>
-              <canvas id="xyalias9Merge"></canvas></div>
-            </div> 
+              <canvas id="xyalias9Merge"></canvas>
+            </div>
           </div> 
         </div> 
-      <div class="swiper-button-prev custom-swiper-button"></div>
-      <div class="swiper-button-next custom-swiper-button"></div>
+        <div class="swiper-button-prev custom-swiper-button"></div>
+        <div class="swiper-button-next custom-swiper-button"></div>
       </div> 
     </div>
 
@@ -291,9 +292,9 @@
 <script>
   const swiper = new Swiper('.swiper-container', {
     loop: false,
+    allowTouchMove: false,
     slidesPerView: 1,
     spaceBetween: 0,
-    allowTouchMove: true,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
@@ -341,10 +342,11 @@
 }
 
 .custom-swiper-button {
-  width: 40px;
-  height: 40px;
+  width: 1vw;
+  height: 1vw;
+
   background-color: #ffffff;
-  border-radius: 20px;
+  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -352,7 +354,7 @@
 }
 
 .custom-swiper-button:after {
-  font-size: 20px;
+  font-size: 0.75vw;
   color: #505050;
   font-family: Arial, sans-serif;
 }
@@ -367,17 +369,11 @@
 
 .swiper-button-prev,
 .swiper-button-next {
+  position: absolute;
   top: 50%;
   transform: translateY(-50%);
 }
 
-.swiper-button-prev {
-  left: 10px;
-}
-
-.swiper-button-next {
-  right: 10px;
-}
 </style>
 <script>
   swiper.on('slideChange', function () {
