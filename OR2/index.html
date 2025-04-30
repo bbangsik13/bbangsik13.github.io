@@ -330,8 +330,6 @@
 .swiper-container {
   width: 100%;
   overflow: hidden; 
-  height: 100%;
-  position: relative;
 }
 
 .swiper-wrapper {
@@ -345,7 +343,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 
 .swiper-slide video {
@@ -354,19 +351,18 @@
 }
 
 .custom-swiper-button {
-  height: 5%;
-  aspect-ratio: 1 / 1;
+  width: 30px;
+  height: 30px;
   background-color: #ffffff;
-  border-radius: 50%;
+  border-radius: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  font-size: 100%;
 }
 
 .custom-swiper-button:after {
-  font-size: 150%;
+  font-size: 20px;
   color: #505050;
   font-family: Arial, sans-serif;
 }
@@ -381,11 +377,17 @@
 
 .swiper-button-prev,
 .swiper-button-next {
-  position: absolute;
   top: 50%;
   transform: translateY(-50%);
 }
 
+.swiper-button-prev {
+  left: 10px;
+}
+
+.swiper-button-next {
+  right: 10px;
+}
 </style>
 <script>
   swiper.on('slideChange', function () {
