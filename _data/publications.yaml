@@ -1,13 +1,13 @@
 papers:
   - title: "Compensating Spatiotemporally Inconsistent Observations for Online Dynamic 3D Gaussian Splatting"
-    authors: "<b>Youngsik Yun</b>, Jeongmin Bae, HyunSeung Son, Seoha Kim, Hahyun Lee, Gun Bang, Youngjung Uh"
+    authors: "<b>Youngsik Yun</b>, Jeongmin Bae, Hyunseung Son, Seoha Kim, Hahyun Lee, Gun Bang, Youngjung Uh"
     paper_pdf: ""
     project: "https://bbangsik13.github.io/OR2"
     code: ""
     venue: "SIGGRAPH 2025"
     selected: y
     image: "/assets/publications/OR2_preview.png"
-    
+
   - title: "Rethinking Open-Vocabulary Segmentation of Radiance Fields in 3D Space"
     authors: "Hyunjee Lee<sup>‡</sup>, <b>Youngsik Yun<sup>‡</sup></b>, Jeongmin Bae, Seoha Kim, Youngjung Uh"
     paper_pdf: "https://arxiv.org/abs/2408.07416"
@@ -18,7 +18,7 @@ papers:
     image: "/assets/publications/Open3DRF_preview.png"
 
   - title: "Optimizing Dynamic NeRF and 3DGS with No Video Synchronization"
-    authors: "Seoha Kim<sup>‡</sup>, Jeongmin Bae<sup>‡</sup>, <b>Youngsik Yun</b>, HyunSeung Son, Hahyun Lee, Gun Bang, Youngjung Uh"
+    authors: "Seoha Kim<sup>‡</sup>, Jeongmin Bae<sup>‡</sup>, <b>Youngsik Yun</b>, Hyunseung Son, Hahyun Lee, Gun Bang, Youngjung Uh"
     paper_pdf: "https://openreview.net/forum?id=RQutkn4V9I"
     # project: "https://seoha-kim.github.io/sync-nerf"
     # code: "https://github.com/seoha-kim/Sync-NeRF"

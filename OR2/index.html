@@ -25,10 +25,15 @@
   <script defer src="./template/js/fontawesome.all.min.js"></script>
   <script src="./template/js/bulma-carousel.min.js"></script>
   <script src="./template/js/bulma-slider.min.js"></script>
+  <script src="./template/js/index.js"></script>
+  <script src="./template/js/app.js"></script>
   <script src="./template/js/video_comparison.js"></script>
 
   <link rel="stylesheet" href="./template/css/dics.original.css">
+  <script src="./template/js/event_handler.js"></script>
   <script src="./template/js/dics.original.js"></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
 
   
   <style>
@@ -104,107 +109,135 @@
       </div>
     </div>
   </section>
-  <br>
 
 
 <section class="section">
   <div class="hero-body">
-      <div class="container is-max-desktop">
-          <h2 class="title is-2 has-text-centered" style="margin-top: -30px">Visual Comparisons</h2>
-          <h2 class="subtitle has-text-centered">
-              <br>
-              <u>Please move the slider in the center to compare the videos.</u>
-              <br>
-              <br>
-              <br>
-          </h2>
-          <h3 class="title is-4 has-text-centered">Neural 3D Video Dataset</h3>
-          <div class="columns is-multiline is-centered">
+    <div class="container is-max-desktop">
+      <h2 class="title is-2 has-text-centered" style="margin-top: -30px">Visual Comparisons</h2>
+      <h2 class="subtitle has-text-centered">
+      <br>
+      <u>Please move the slider in the center to compare the videos.</u>
+      <br>
+      <br>
+      </h2>
+      <h3 class="title is-4 has-text-centered">Neural 3D Video Dataset</h3>
+      <div class="columns is-multiline is-centered">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
               <div class="column is-half">
-                  <div class="video-container">
-                      <video class="video" id="xyalias1" autoplay loop playsinline muted src="./template/resources/flame_steak_3DGStream.mp4"></video>
-                      <canvas id="xyalias1Merge"></canvas>
-                  </div>
+                <div class="video-container">
+                  <video class="video" id="xyalias1" autoplay loop playsinline muted data-src="./template/resources/flame_steak_3DGStream.mp4"></video>
+                  <canvas id="xyalias1Merge"></canvas>
+                </div>
               </div>
               <div class="column is-half">
-                  <div class="video-container">
-                      <video class="video" id="xyalias2" autoplay loop playsinline muted src="./template/resources/cut_roasted_beef_HiCoM.mp4"></video>
-                      <canvas id="xyalias2Merge"></canvas>
-                  </div>
+                <div class="video-container">
+                  <video class="video" id="xyalias2" autoplay loop playsinline muted data-src="./template/resources/cut_roasted_beef_HiCoM.mp4"></video>
+                  <canvas id="xyalias2Merge"></canvas>
+                </div>
               </div>
-              <div class="column is-half">
-                  <div class="video-container">
-                      <video class="video" id="xyalias3" autoplay loop playsinline muted src="./template/resources/coffee_martini_wo_cam13_Dynamic3DG.mp4"></video>
-                      <canvas id="xyalias3Merge"></canvas>
-                  </div>
-              </div>
-              <div class="column is-half">
-                  <div class="video-container">
-                      <video class="video" id="xyalias4" autoplay loop playsinline muted src="./template/resources/coffee_martini_wo_cam13_3DGStream.mp4"></video>
-                      <canvas id="xyalias4Merge"></canvas>
-                  </div>
-              </div>
-              <div class="column is-half">
-                  <div class="video-container">
-                      <video class="video" id="xyalias5" autoplay loop playsinline muted src="./template/resources/cook_spinach_HiCoM.mp4"></video>
-                      <canvas id="xyalias5Merge"></canvas>
-                  </div>
-              </div>
-              <div class="column is-half">
-                  <div class="video-container">
-                      <video class="video" id="xyalias6" autoplay loop playsinline muted src="./template/resources/sear_steak_Dynamic3DG.mp4"></video>
-                      <canvas id="xyalias6Merge"></canvas>
-                  </div>
-              </div>
-          </div>
-
-          <h3 class="title is-4 has-text-centered">MeetRoom Dataset</h3>
-          <h4 class="title is-6 has-text-centered"><u>Please note that all the baselines fails in this dataset.</u></h3>
-            <div class="video-containerv2">
-              <video class="video" id="xyalias7" autoplay loop playsinline muted src="./template/resources/vrheadset_Dynamic3DG.mp4"></video>
-              <canvas id="xyalias7Merge"></canvas>
-          </div>
-          <br>
-          <div class="video-containerv2">
-              <video class="video" id="xyalias8" autoplay loop playsinline muted src="./template/resources/discussion_3DGStream.mp4"></video>
-              <canvas id="xyalias8Merge"></canvas>
-          </div>
-          <br>
-          <div class="video-containerv2">
-              <video class="video" id="xyalias9" autoplay loop playsinline muted src="./template/resources/trimming_HiCoM.mp4"></video>
-              <canvas id="xyalias9Merge"></canvas></div>
-          </div> 
-
-          <br>
-          <div class="container is-max-desktop">
-            <h3 class="title is-3 has-text-centered">Spiral Rendering at a Specific Time</h3>
-            <h4 class="title is-6 has-text-centered"><u>Please note that in 3D Gaussian Splatting, some results bear view inconsistency due to popping artifacts.</u></h3>
-              <div class="video-container">
-                <video class="video" id="xyalias10" autoplay loop playsinline muted src="./template/resources/cut_roasted_beef_3DGStream_spiral.mp4"></video>
-                <canvas id="xyalias10Merge"></canvas>
             </div>
-            <br>
-              <div class="video-container">
-                <video class="video" id="xyalias11" autoplay loop playsinline muted src="./template/resources/flame_salmon_frag1_3DGStream_spiral.mp4"></video>
-                <canvas id="xyalias11Merge"></canvas>
-            </div>
-            <br>
-              <div class="video-container">
-                <video class="video" id="xyalias12" autoplay loop playsinline muted src="./template/resources/sear_steak_3DGStream_spiral.mp4"></video>
-                <canvas id="xyalias12Merge"></canvas>
+            <div class="swiper-slide">
+              <div class="column is-half">
+                <div class="video-container">
+                  <video class="video" id="xyalias3" autoplay loop playsinline muted data-src="./template/resources/coffee_martini_wo_cam13_Dynamic3DG.mp4"></video>
+                  <canvas id="xyalias3Merge"></canvas>
+                </div>
               </div>
+              <div class="column is-half">
+                <div class="video-container">
+                  <video class="video" id="xyalias4" autoplay loop playsinline muted data-src="./template/resources/coffee_martini_wo_cam13_3DGStream.mp4"></video>
+                  <canvas id="xyalias4Merge"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="column is-half">
+                <div class="video-container">
+                  <video class="video" id="xyalias5" autoplay loop playsinline muted data-src="./template/resources/cook_spinach_HiCoM.mp4"></video>
+                  <canvas id="xyalias5Merge"></canvas>
+                </div>
+              </div>
+              <div class="column is-half">
+                <div class="video-container">
+                  <video class="video" id="xyalias6" autoplay loop playsinline muted data-src="./template/resources/sear_steak_Dynamic3DG.mp4"></video>
+                  <canvas id="xyalias6Merge"></canvas>
+                </div>
+              </div>
+            </div>
           </div>
-        <br>
-        <h3 class="title is-3 has-text-centered">Visualizing the Residual Map</h3>
-        <div class="container is-max-desktop">
-
-          <div class="video-containerv3">
-            <video src="./template/resources/trimming_residual_map.mp4"  autoplay muted loop playsinline></video>
+        <div class="swiper-button-prev custom-swiper-button"></div>
+        <div class="swiper-button-next custom-swiper-button"></div>
         </div>
-         
+      </div>
+    </div>
+    <div class="container is-max-desktop">
+      <h3 class="title is-4 has-text-centered">MeetRoom Dataset</h3>
+      <h4 class="title is-6 has-text-centered"><u>Please note that all the baselines fails in this dataset.</u></h4>
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="video-container">
+              <video class="video" id="xyalias7" autoplay loop playsinline muted data-src="./template/resources/vrheadset_Dynamic3DG.mp4"></video>
+              <canvas id="xyalias7Merge"></canvas>
+            </div>
           </div>
+          <div class="swiper-slide">
+            <div class="video-container">
+              <video class="video" id="xyalias8" autoplay loop playsinline muted data-src="./template/resources/discussion_3DGStream.mp4"></video>
+              <canvas id="xyalias8Merge"></canvas>
+            </div>
+          </div> 
+            <div class="swiper-slide">
+              <div class="video-container">
+              <video class="video" id="xyalias9" autoplay loop playsinline muted data-src="./template/resources/trimming_HiCoM.mp4"></video>
+              <canvas id="xyalias9Merge"></canvas></div>
+            </div> 
+          </div> 
+        </div> 
+      <div class="swiper-button-prev custom-swiper-button"></div>
+      <div class="swiper-button-next custom-swiper-button"></div>
+      </div> 
     </div>
 
+    <div class="container is-max-desktop">
+      <h3 class="title is-3 has-text-centered">Spiral Rendering at a Specific Time</h3>
+      <h4 class="title is-6 has-text-centered"><u>Please note that in 3D Gaussian Splatting, some results bear view inconsistency due to popping artifacts.</u></h4>
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="video-container">
+              <video class="video" id="xyalias10" autoplay loop playsinline muted data-src="./template/resources/cut_roasted_beef_3DGStream_spiral.mp4"></video>
+              <canvas id="xyalias10Merge"></canvas>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="video-container">
+              <video class="video" id="xyalias11" autoplay loop playsinline muted data-src="./template/resources/flame_salmon_frag1_3DGStream_spiral.mp4"></video>
+              <canvas id="xyalias11Merge"></canvas>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="video-container">
+              <video class="video" id="xyalias12" autoplay loop playsinline muted data-src="./template/resources/sear_steak_3DGStream_spiral.mp4"></video>
+              <canvas id="xyalias12Merge"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-button-prev custom-swiper-button"></div>
+        <div class="swiper-button-next custom-swiper-button"></div>
+      </div>
+    </div>
+    <br>
+
+    <div class="container is-max-desktop">
+    <h3 class="title is-3 has-text-centered">Visualizing the Residual Map</h3>
+      <div class="video-containerv3">
+        <video autoplay loop playsinline muted data-src="./template/resources/trimming_residual_map.mp4"></video>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -251,6 +284,135 @@
           video.play().catch(e => {});
         }
       });
+    });
+  });
+</script>
+  
+<script>
+  const swiper = new Swiper('.swiper-container', {
+    loop: false,
+    slidesPerView: 1,
+    spaceBetween: 0,
+    allowTouchMove: true,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    on: {
+      slideChangeTransitionStart: function () {
+      },
+      slideChangeTransitionEnd: function () {
+        const currentSlide = this.slides[this.activeIndex];
+        const videos = currentSlide.querySelectorAll('video');
+        videos.forEach((video) => {
+          if (video.paused) {
+            video.play(); 
+          }
+        });
+      },
+    },
+  });
+</script>
+<style>
+.swiper-container {
+  width: 100%;
+  overflow: hidden; 
+  height: 100%;
+  position: relative;
+}
+
+.swiper-wrapper {
+  display: flex;
+}
+
+.swiper-slide {
+  flex: 0 0 100%; 
+  max-width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.swiper-slide video {
+  width: 100%;
+  height: auto;
+}
+
+.custom-swiper-button {
+  width: 40px;
+  height: 40px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.custom-swiper-button:after {
+  font-size: 20px;
+  color: #505050;
+  font-family: Arial, sans-serif;
+}
+
+.swiper-button-prev.custom-swiper-button:after {
+  content: '◀';
+}
+
+.swiper-button-next.custom-swiper-button:after {
+  content: '▶';
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.swiper-button-prev {
+  left: 10px;
+}
+
+.swiper-button-next {
+  right: 10px;
+}
+</style>
+<script>
+  swiper.on('slideChange', function () {
+
+    const currentSlide = swiper.slides[swiper.activeIndex];
+  const activeVideos = currentSlide.querySelectorAll('video');
+
+  swiper.slides.forEach((slide, index) => {
+    if (index !== swiper.activeIndex) {
+      const videos = slide.querySelectorAll('video');
+      videos.forEach(video => {
+        video.pause();
+        video.removeAttribute("src");  // Lazy unload
+        video.load();
+      });
+    }
+  });
+
+  activeVideos.forEach(video => {
+    const src = video.getAttribute("data-src");
+    if (src && !video.src) {
+      video.src = src;
+      video.load();
+      video.play().catch(e => {});
+    }
+  });
+});
+
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const lazyVideos = document.querySelectorAll('video[data-src]');
+    lazyVideos.forEach(video => {
+      video.src = video.getAttribute('data-src');
+      video.load();
     });
   });
 </script>
