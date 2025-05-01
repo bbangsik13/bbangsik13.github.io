@@ -34,7 +34,9 @@
   <script src="./template/js/dics.original.js"></script>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
-
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   
   <style>
 .video-container {
@@ -114,23 +116,86 @@
 <section class="hero teaser">
   <div class="hero-body">
     <div class="container is-max-desktop">
-      <h2 class="title is-2 has-text-centered" style="margin-top: -30px">Summary</h2>
       <div class="container has-text-centered">
-          <p style="margin-bottom: 40px;margin-top: 40px;">
-            We reveal that existing online reconstruction of dynamic scenes with 3D Gaussian Splatting produces temporally inconsistent results, <b>led by inevitable noise</b> in real-world recordings. 
-            To address this, we <b>decompose the rendered images into the ideal signal and the errors</b> during optimization, achieving temporally consistent results across various baselines.
-        </p>
+      <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Summary</h2>
+      <video class="video" autoplay loop playsinline muted data-src="./template/resources/teaser_crop.mp4"></video>
+          <p>We reveal that existing online reconstruction of dynamic scenes with 3D Gaussian Splatting produces temporally inconsistent results, <b>led by inevitable noise</b> in real-world recordings. 
+            <br>
+            To address this, we <b>decompose the rendered images into the ideal signal and the errors</b> during optimization, achieving temporally consistent results across various baselines.</p>
+      </div> 
+    </div>
+  </div>
+</section>
+<br>
+<br>
+<br>
+<br>
+
+<section class="hero teaser">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="container has-text-centered">
+        <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Problem Statement</h2>
+        <video class="video" autoplay loop playsinline muted data-src="./template/resources/problem_statement.mp4" width="80%"></video>
+        <br>
+        The <b>observations are different</b> between adjacent frames, even in <b>static regions</b>. 
+        <br>
+        These differences are inevitable due to sensor noises and other reasons. Such noise harms temporal consistency.
+        <br>
+        To support the problem statement, we conducted a toy experiment, reconstructing a synthetic scene with and without noise. 
+        <br>
+        <br>
+        <figure>
+          <img src="./template/resources/toy_example.png" width="80%">
+        </figure>
+        
+        While the results from ground truth observations are mostly clear, the results from noisy observation exhibit flickering artifacts  over time.
       </div> 
     </div>
   </div>
 </section>
 
+<br>
+<br>
+<br>
+<br>
+
 <section class="hero teaser">
   <div class="hero-body">
     <div class="container is-max-desktop">
-      <h2 class="title is-2 has-text-centered" style="margin-top: -30px">Video</h2>
-      <div class="publication-video">
-        <iframe src="https://www.youtube.com/embed/TbRiTxCdf1M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+      <div class="container has-text-centered">
+      <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Method</h2>
+      <figure>
+        <img src="./template/resources/decompose.png" width="70%">
+      </figure>
+        <p>We model an observation as a <b>combination</b> of the <b>ideal</b> observation and the <b>learnable residual map</b>.</p>
+      <br>
+      <figure>
+        <img src="./template/resources/method.png" width="70%">
+        <p>Then we jointly optimize the Gaussians and the residual maps, following the online reconstruction pipeline.</p>
+      </figure>
+      </div> 
+    </div>
+  </div>
+</section>
+
+<br>
+<br>
+<br>
+<br>
+
+<section class="hero teaser">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="container has-text-centered">
+      <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Evaluation</h2>
+      <p>To measure temporal consistency, we calculate the total variation in the static region, denoted as mTV. 
+        <br>
+        For readability, we multiply mTV by 100 and refer to it as mTV\(_{\times 100} \).</p>
+      <figure>
+        <img src="./template/resources/evaluation.png" width="90%">
+      </figure>
+        <p>Our method greatly <b>enhances temporal consistency</b> and improves the PSNR of the baselines.</p>
       </div> 
     </div>
   </div>
@@ -139,14 +204,13 @@
 <section class="section">
   <div class="hero-body">
     <div class="container is-max-desktop">
-      <h2 class="title is-2 has-text-centered" style="margin-top: -30px">Visual Comparisons</h2>
+      <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Visual Comparisons</h2>
       <h2 class="subtitle has-text-centered">
       <br>
       <u>Please move the slider in the center to compare the videos.</u>
       <br>
       <br>
       </h2>
-      <h3 class="title is-4 has-text-centered">Neural 3D Video Dataset</h3>
       <div class="columns is-multiline is-centered">
         <div id="swiper-neural3d" class="swiper-container">
           <div class="swiper-wrapper">
@@ -201,106 +265,124 @@
           </div>
         </div>
       </div>
-    </div>
-    <br>
-    <div class="container is-max-desktop">
-      <h3 class="title is-4 has-text-centered">MeetRoom Dataset</h3>
-      <h4 class="title is-6 has-text-centered"><u>Please note that all the baselines fails in this dataset.</u></h4>
-      <div id="swiper-meetroom" class="swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="video-container">
-              <video class="video" id="xyalias7" autoplay loop playsinline muted data-src="./template/resources/vrheadset_Dynamic3DG.mp4"></video>
-              <canvas id="xyalias7Merge"></canvas>
+      <br>
+      <h3 class="title is-4 has-text-centered">Spiral Rendering at a Specific Time</h3>
+        <h4 class="title is-6 has-text-centered"><u>Please note that in 3D Gaussian Splatting, some results bear view inconsistency due to popping artifacts.</u></h4>
+        <div id="swiper-spiral" class="swiper-container" style="width: 60%; margin: 0 auto;">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="video-container">
+                <video class="video" id="xyalias10" autoplay loop playsinline muted data-src="./template/resources/cut_roasted_beef_3DGStream_spiral.mp4"></video>
+                <canvas id="xyalias10Merge"></canvas>
+              </div>
+              <div class="swiper-button-prev swiper-button-prev-spiral custom-swiper-button"></div>
+              <div class="swiper-button-next swiper-button-next-spiral custom-swiper-button"></div>
             </div>
-            <div class="swiper-button-prev swiper-button-prev-meetroom custom-swiper-button"></div>
-            <div class="swiper-button-next swiper-button-next-meetroom custom-swiper-button"></div>
-          </div>
-          <div class="swiper-slide">
-            <div class="video-container">
-              <video class="video" id="xyalias8" autoplay loop playsinline muted data-src="./template/resources/discussion_3DGStream.mp4"></video>
-              <canvas id="xyalias8Merge"></canvas>
+            <div class="swiper-slide">
+              <div class="video-container">
+                <video class="video" id="xyalias11" autoplay loop playsinline muted data-src="./template/resources/flame_salmon_frag1_3DGStream_spiral.mp4"></video>
+                <canvas id="xyalias11Merge"></canvas>
+              </div>
+              <div class="swiper-button-prev swiper-button-prev-spiral custom-swiper-button"></div>
+              <div class="swiper-button-next swiper-button-next-spiral custom-swiper-button"></div>
             </div>
-            <div class="swiper-button-prev swiper-button-prev-meetroom custom-swiper-button"></div>
-            <div class="swiper-button-next swiper-button-next-meetroom custom-swiper-button"></div>
-          </div> 
-          <div class="swiper-slide">
-            <div class="video-container">
-              <video class="video" id="xyalias9" autoplay loop playsinline muted data-src="./template/resources/trimming_HiCoM.mp4"></video>
-              <canvas id="xyalias9Merge"></canvas>
-            </div>
-            <div class="swiper-button-prev swiper-button-prev-meetroom custom-swiper-button"></div>
-            <div class="swiper-button-next swiper-button-next-meetroom custom-swiper-button"></div>
-          </div> 
-        </div> 
-      </div> 
-    </div>
-    <br>
-    <div class="container is-max-desktop">
-      <h3 class="title is-3 has-text-centered">Spiral Rendering at a Specific Time</h3>
-      <h4 class="title is-6 has-text-centered"><u>Please note that in 3D Gaussian Splatting, some results bear view inconsistency due to popping artifacts.</u></h4>
-      <div id="swiper-spiral" class="swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="video-container">
-              <video class="video" id="xyalias10" autoplay loop playsinline muted data-src="./template/resources/cut_roasted_beef_3DGStream_spiral.mp4"></video>
-              <canvas id="xyalias10Merge"></canvas>
-            </div>
-            <div class="swiper-button-prev swiper-button-prev-spiral custom-swiper-button"></div>
-            <div class="swiper-button-next swiper-button-next-spiral custom-swiper-button"></div>
-          </div>
-          <div class="swiper-slide">
-            <div class="video-container">
-              <video class="video" id="xyalias11" autoplay loop playsinline muted data-src="./template/resources/flame_salmon_frag1_3DGStream_spiral.mp4"></video>
-              <canvas id="xyalias11Merge"></canvas>
-            </div>
-            <div class="swiper-button-prev swiper-button-prev-spiral custom-swiper-button"></div>
-            <div class="swiper-button-next swiper-button-next-spiral custom-swiper-button"></div>
-          </div>
-          <div class="swiper-slide">
-            <div class="video-container">
-              <video class="video" id="xyalias12" autoplay loop playsinline muted data-src="./template/resources/sear_steak_3DGStream_spiral.mp4"></video>
-              <canvas id="xyalias12Merge"></canvas>
-            </div>
-            <div class="swiper-button-prev swiper-button-prev-spiral custom-swiper-button"></div>
-            <div class="swiper-button-next swiper-button-next-spiral custom-swiper-button"></div>
           </div>
         </div>
-      </div>
     </div>
     <br>
+  </div>
+</section>
 
-    <div class="container is-max-desktop">
-    <h3 class="title is-3 has-text-centered">Visualizing the Residual Map</h3>
-      <div class="video-containerv3">
-        <video autoplay loop playsinline muted data-src="./template/resources/trimming_residual_map.mp4"></video>
+<section class="hero teaser">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Analysis</h2>
+        <div style="display: flex; justify-content: center; align-items: center; gap: 2rem;">
+          
+          <div style="text-align: center;">
+            <h3 class="title is-4">Visualizing the Learned Residual Map</h3>
+            <video autoplay loop playsinline muted data-src="./template/resources/trimming_residual_map.mp4" width="100%"></video>
+          </div>
+        
+          <div style="text-align: center;">
+            <h3 class="title is-4">Restoration</h3>
+            <figure>
+              <img src="./template/resources/restoration.png" width="100%">
+            </figure>
+          </div>
+        </div>
+
+        <p>We restore the train view observation to its ground truth by subtracting the learned residual map from the corresponding observation, indicating that the residual successfully captures the noise of the observation.</p>
       </div>
     </div>
   </div>
 </section>
 
+<br>
+<br>
+<br>
+<br>
 
-<style>
-  .video-containerv2 {
-    width: 100%;
-    margin: 0 auto;
-    position: relative;
-  }
+<section class="hero teaser">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="container has-text-centered">
+      <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Limitation</h2>
+      <h4 class="title is-6 has-text-centered"><u>Please note that all the baselines fails in MeetRoom dataset.</u></h4>
+      <div id="swiper-meetroom" class="swiper-container" style="width: 60%; margin: 0 auto;">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="video-container">
+                <video class="video" id="xyalias7" autoplay loop playsinline muted data-src="./template/resources/vrheadset_Dynamic3DG.mp4"></video>
+                <canvas id="xyalias7Merge"></canvas>
+              </div>
+              <div class="swiper-button-prev swiper-button-prev-meetroom custom-swiper-button"></div>
+              <div class="swiper-button-next swiper-button-next-meetroom custom-swiper-button"></div>
+            </div>
+            <div class="swiper-slide">
+              <div class="video-container">
+                <video class="video" id="xyalias8" autoplay loop playsinline muted data-src="./template/resources/discussion_3DGStream.mp4"></video>
+                <canvas id="xyalias8Merge"></canvas>
+              </div>
+              <div class="swiper-button-prev swiper-button-prev-meetroom custom-swiper-button"></div>
+              <div class="swiper-button-next swiper-button-next-meetroom custom-swiper-button"></div>
+            </div> 
+            <div class="swiper-slide">
+              <div class="video-container">
+                <video class="video" id="xyalias9" autoplay loop playsinline muted data-src="./template/resources/trimming_HiCoM.mp4"></video>
+                <canvas id="xyalias9Merge"></canvas>
+              </div>
+              <div class="swiper-button-prev swiper-button-prev-meetroom custom-swiper-button"></div>
+              <div class="swiper-button-next swiper-button-next-meetroom custom-swiper-button"></div>
+            </div> 
+          </div> 
+        </div> 
+        <p>Existing baselines struggle under challenging conditions. As these failures arise from problem settings that are orthogonal to our temporal consistency objective, our method does not resolve these failures. 
+          <br>
+          Moreover, since our method assumes well-reconstructed scenes, its effectiveness decreases when the baseline fails. 
+          <br>
+          However, our method will remain effective in improving temporal consistency when integrated with future work that improves upon these baselines.</p>
+      </div> 
+    </div>
+  </div>
+</section>
 
-  .video-containerv2 video,
-  .video-containerv2 canvas {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-</style>
+<br>
+<br>
+<br>
+<br>
 
-<style>
-  .video-containerv3 {
-    display: flex;
-    justify-content: center;
-  }
-</style>
+<section class="hero teaser">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Video Presentation</h2>
+      <div class="publication-video">
+        <iframe src="https://www.youtube.com/embed/TbRiTxCdf1M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+      </div> 
+    </div>
+  </div>
+</section>
 
 </body>
 </html>
@@ -308,7 +390,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
-<script>
+<!-- <script>
   document.addEventListener("DOMContentLoaded", () => {
     const videos = document.querySelectorAll("video");
 
@@ -324,7 +406,7 @@
       });
     });
   });
-</script>
+</script> -->
   
 <script>
   function setupSwiper(containerId, prevClass, nextClass) {
