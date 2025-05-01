@@ -123,7 +123,7 @@
       <div class="container has-text-centered">
       <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Summary</h2>
       <video class="video" autoplay loop playsinline muted data-src="./template/resources/teaser_crop.mp4"></video>
-          <p>We reveal that existing online reconstruction of dynamic scenes with 3D Gaussian Splatting produces temporally inconsistent results, <b>led by inevitable noise</b> in real-world recordings. 
+          <p>Existing online reconstruction of dynamic scenes with 3D Gaussian Splatting produces temporally inconsistent results, <b>led by inevitable noise</b> in real-world recordings. 
             <br>
             To address this, we <b>decompose the rendered images into the ideal signal and the errors</b> during optimization, achieving temporally consistent results across various baselines.</p>
       </div> 
@@ -142,7 +142,7 @@
         <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Problem Statement</h2>
         <video class="video" autoplay loop playsinline muted data-src="./template/resources/problem_statement.mp4" width="80%"></video>
         <br>
-        The <b>observations are different</b> between adjacent frames, even in <b>static regions</b>. 
+        The <b>observations are different</b> between adjacent frames, <b>even in static regions</b>. 
         <br>
         These differences are inevitable due to sensor noises and other reasons. Such noise harms temporal consistency.
         <br>
@@ -271,7 +271,7 @@
       </div>
       <br>
       <h3 class="title is-4 has-text-centered">Spiral Rendering at a Specific Time</h3>
-        <h4 class="title is-6 has-text-centered"><u>Please note that in 3D Gaussian Splatting, some results bear view inconsistency due to popping artifacts.</u></h4>
+        <h4 class="title is-6 has-text-centered"><u>Please note that in 3D Gaussian Splatting, some results bear view inconsistency due to popping artifacts <a href="#references">[1,2]</a>.</u></h4>
         <div id="swiper-spiral" class="swiper-container" style="width: 60%; margin: 0 auto;">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
@@ -317,7 +317,7 @@
           </div>
         </div>
 
-        <p>We restore the train view observation to its ground truth by subtracting the learned residual map from the corresponding observation, indicating that the residual successfully captures the noise of the observation.</p>
+        <p>We restore the train-view observation to its ground truth by subtracting the learned residual map from the corresponding observation, indicating that the residual successfully captures the noise of the observation.</p>
       </div>
     </div>
   </div>
@@ -385,6 +385,22 @@
         <iframe src="https://www.youtube.com/embed/TbRiTxCdf1M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
       </div> 
     </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code></code></pre>
+  </div>
+</section>
+
+<section class="section" id="references">
+  <div class="container is-max-desktop content">
+    <h2 class="title">References</h2>
+    <a href="https://arxiv.org/abs/2402.00525">[1]</a> Radl, et al. "Stopthepop: Sorted gaussian splatting for view-consistent real-time rendering." ACM TOG (2024)
+    <br>
+    <a href="https://arxiv.org/abs/2410.01804">[2]</a> Mai, et al. "Ever: Exact volumetric ellipsoid rendering for real-time view synthesis." arXiv preprint (2024).
   </div>
 </section>
 
