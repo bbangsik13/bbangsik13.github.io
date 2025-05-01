@@ -26,7 +26,7 @@ function playVids(videoId) {
 
     var position = 0.5;
     var mergeContext = videoMerge.getContext("2d");
-
+    let drawRequested = false;
     function trackLocation(e) {
         var bcr = videoMerge.getBoundingClientRect();
         position = ((e.pageX - bcr.x) / bcr.width);
@@ -44,6 +44,7 @@ function playVids(videoId) {
     videoMerge.addEventListener("touchmove",  trackLocationTouch, false);
 
     function drawLoop() {
+        drawRequested = false;
         var canvasWidth = videoMerge.width;
         var canvasHeight = videoMerge.height;
 
@@ -85,10 +86,14 @@ function playVids(videoId) {
         mergeContext.stroke();
 
         requestAnimationFrame(drawLoop);
+        drawRequested = true;
     }
 
     vid.addEventListener('play', function() {
-        requestAnimationFrame(drawLoop);
+        if (!drawRequested) {
+            drawRequested = true;
+            requestAnimationFrame(drawLoop);
+        }
     }, false);
 }
 
