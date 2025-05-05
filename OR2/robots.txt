@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bbangsik13.github.io/OR2/sitemap.xml
