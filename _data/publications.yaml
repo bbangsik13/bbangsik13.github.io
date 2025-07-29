@@ -2,6 +2,7 @@ papers:
   - title: "Compensating Spatiotemporally Inconsistent Observations for Online Dynamic 3D Gaussian Splatting"
     authors: "<b>Youngsik Yun</b>, Jeongmin Bae, Hyunseung Son, Seoha Kim, Hahyun Lee, Gun Bang, Youngjung Uh"
     project: "https://bbangsik13.github.io/OR2"
+    code: "https://github.com/bbangsik13/OR2"
     paper_pdf: "https://arxiv.org/abs/2505.01235"
     venue: "SIGGRAPH 2025"
     selected: y
