@@ -153,7 +153,19 @@
         <video controls autoplay loop playsinline muted width="80%">
           <source src="./template/resources/1d_toy.mp4" type="video/mp4">
         </video>    
-        <p> aaaaa </p>
+        </div> 
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="container has-text-centered">
+        <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Method</h2>
+        <figure>
+          <img src="./template/resources/method.png" width="85%">
+        </figure>
         </div> 
       </div>
     </div>
@@ -206,3 +218,20 @@
 </body>
 </html>
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const videos = document.querySelectorAll("video");
+
+    videos.forEach(video => {
+      video.addEventListener('canplay', () => {
+        video.play().catch(e => console.warn("Autoplay blocked:", e));
+      });
+
+      video.addEventListener('pause', () => {
+        if (!video.ended) {
+          video.play().catch(e => {});
+        }
+      });
+    });
+  });
+</script>
