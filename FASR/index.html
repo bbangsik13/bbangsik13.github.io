@@ -125,7 +125,7 @@
         <div class="container has-text-centered">
         <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Summary</h2>
         <div class="news-imgWrap">
-          <img src="./template/resources/teaser.png">
+          <img src="./template/resources/teaser.png" width="50%">
           <p><b>Figure 1.</b> Given 8 training views, our method maintains low Average Error across interpolated novel views, whereas the baseline exhibits overfitting. Plots are means and standard deviations over 10 runs.</p>
         </div>
         </div> 
@@ -144,27 +144,25 @@
         <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Motivation</h2>
         <div class="news-imgWrap">
           <img src="./template/resources/motivation.png">
-          <p><b>Figure 2.</b> Conceptual 1D Loss Landscape of Flat and Sharp Minima [2]. Flat minimum better generalize then sharp minimum.</p>
+          <p><b>Figure 2.</b> Conceptual 1D Loss Landscape of Flat and Sharp Minima [2].</p>
         </div>
       </div> 
         <br>
-        Improving generalization—the ability of a model to perform accurately on unseen data—has been a long-standing problem of interest in deep learning.
-        Keskar et al. [2] show that sharp minima exhibit a large gap between train and test loss, whereas flat minima show a much smaller gap (Fig. 2).
-        This tendency motivated research to investigate the relationship between generalization and loss landscape.
-        Consequently, Sharpness-Aware Minimization (SAM) [3] jointly minimizes both empirical loss and sharpness, which is equivalent to minimizing the worst-case loss within a neighborhood of radius ρ.
+        Keskar et al. [2] show that flat minimum better generalize then sharp minimum (Fig. 2).
+        Motivated by this tendency, Sharpness-Aware Minimization (SAM) [3] jointly minimizes both empirical loss and sharpness, which is equivalent to minimizing the worst-case loss within a neighborhood of radius ρ.
         <br>
         <div class="container has-text-centered">
           <img src="./template/resources/SAM.png">
         </div>
         <br>
-        The model parameters w are updated with the gradient computed at the estimated local maximum w+ε.
-        In practice, the local maximum is approximated via first-order Taylor expansion for the loss function around the current parameters, perturbing the parameters in the gradient direction with magnitude ρ.
+        The model parameters are updated with the local maximum loss.
+        In practice, the local maximum is approximated via first-order Taylor expansion, perturbing the parameters in the gradient direction with magnitude ρ.
         <div class="container has-text-centered">
           <img src="./template/resources/update.png">
         </div>
         <br>
-        The follow-up work WSAM [4] revisits sharpness as a regularization term by weighting the estimated sharpness.
-        When the weight hyperparameter γ is set to 0, the sharpness term vanishes and the optimization minimizes the empirical loss only. When γ = 0.5, WSAM is equivalent to SAM, while for 0.5 &lt γ &lt 1, the sharpness term is emphasized.
+        WSAM [4] revisits sharpness as a regularization term by weighting it.
+        When the weight hyperparameter γ is 0, the optimization minimizes the empirical loss only. When γ = 0.5, it is equivalent to SAM, while for 0.5 &lt γ &lt 1, the sharpness term is emphasized.
         <div class="container has-text-centered">
           <img src="./template/resources/WSAM.png">
         </div>
@@ -209,17 +207,19 @@
             </div>
         </div>
         <br>
+        Fig. 5 ilustrates an overview of our method. 
         Before applying frequency adaptivity, we begin by perturbing the per-Gaussian attribute. 
-        Going a step further, we adapt the perturbation magnitude according to the local image frequency (Fig. 5).
-        Finally, we adapt the regularization weight according to the frequency of each Gaussian (Fig. 6).
+        Then, we adapt the perturbation magnitude according to the local image frequency (Fig. 6).
+        Finally, we adapt the regularization weight according to the frequency of each Gaussian (Fig. 7).
+        Fig. 8 summarizes our algorithm.
         <br>
         
         <div class="columns">
 
           <div class="column">
             <div class="news-imgWrap has-text-centered">
-              <video controls autoplay loop playsinline muted width="100%">
-                <source src="./template/resources/FAS.mp4" type="video/mp4">
+              <video controls autoplay loop playsinline muted width="70%">
+                <source src="./template/resources/FAP.mp4" type="video/mp4">
               </video>   
               <p><b>Figure 6.</b> Frequency-adaptive perturbation magnitude.</p>
             </div>
@@ -237,13 +237,12 @@
         </div>
         
         <br>
-        Fig. 8 ilustrates an overview of our algorithm.
         <div class="container has-text-centered">
           <div class="news-imgWrap">
             <video controls autoplay loop playsinline muted width="80%">
               <source src="./template/resources/FASR_algorithm.mp4" type="video/mp4">
             </video>   
-            <p><b>Figure 8.</b> Overview of Frequency-Adaptive Sharpness Regularization (FASR).</p>
+            <p><b>Figure 8.</b> Algorithm of Frequency-Adaptive Sharpness Regularization (FASR).</p>
           </div>
         </div> 
       </div>
@@ -256,11 +255,12 @@
         <div class="container has-text-centered">
         <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Quantitative Results</h2>
         <div class="news-imgWrap">
-          <p><b>Table 1.</b> Quantitative comparison on LLFF and MipNeRF-360 dataset. Considering the randomness of 3DGS, we conduct experiments with multiple runs, reporting mean ± std. Our method improves baselines across the board.</p>
+          <p><b>Table 1.</b> Quantitative comparison on LLFF and MipNeRF-360 dataset. Considering the randomness of 3DGS, we conduct experiments with multiple runs, reporting mean ± std.</p>
           <img src="./template/resources/quant.png">
         </div>
         </div> 
         <br>
+        As shown in Tab. 1, Our method improves baselines across the board.
       </div>
     </div>
   </section>
@@ -306,7 +306,19 @@
       </div>
     </div>
   </section>
-
+  
+  <section class="section" id="references">
+    <div class="container is-max-desktop content">
+      <h2 class="title">References</h2>
+      <a href="https://arxiv.org/abs/2308.04079">[1]</a> Kerbl, et al. "3D Gaussian Splatting for Real-Time Radiance Field Rendering" ACM TOG (2023)
+      <br>
+      <a href="https://arxiv.org/abs/1609.04836">[2]</a> Keskar, et al. "On Large-Batch Training for Deep Learning: Generalization Gap and Sharp Minima" ICLR (2017).
+      <br>
+      <a href="https://arxiv.org/abs/2010.01412">[3]</a> Foret, et al. "Sharpness-Aware Minimization for Efficiently Improving Generalization" ICLR (2021).
+      <br>
+      <a href="https://arxiv.org/abs/2305.15817">[4]</a> Yue, et al. "Sharpness-Aware Minimization Revisited: Weighted Sharpness as a Regularization Term" KDD (2023).
+    </div>
+  </section>
 
   
 </body>
