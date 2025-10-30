@@ -124,23 +124,50 @@
       <div class="container is-max-desktop">
         <div class="container has-text-centered">
         <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Summary</h2>
-        <figure>
-          <img src="./template/resources/teaser.png" width="40%">
-        </figure>
+        <div class="news-imgWrap">
+          <img src="./template/resources/teaser.png">
+          <p><b>Figure 1.</b> Given 8 training views, our method maintains low Average Error across interpolated novel views, whereas the baseline exhibits overfitting. Plots are means and standard deviations over 10 runs.</p>
+        </div>
         </div> 
+        <br>
+        3D Gaussian Splatting (3DGS) [1] lacks generalization across novel viewpoints in a few-shot scenario because it overfits to the sparse observations (Fig. 1). 
+        <b>We reformulate the 3DGS training objective, thereby explicitly guiding 3DGS to converge toward better generalization.</b> 
       </div>
     </div>
   </section>
   
+
   <section class="hero teaser">
     <div class="hero-body">
       <div class="container is-max-desktop">
         <div class="container has-text-centered">
         <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Motivation</h2>
-        <figure>
-          <img src="./template/resources/motivation.png" width="40%">
-        </figure>
-        </div> 
+        <div class="news-imgWrap">
+          <img src="./template/resources/motivation.png">
+          <p><b>Figure 2.</b> Conceptual 1D Loss Landscape of Flat and Sharp Minima [2]. Flat minimum better generalize then sharp minimum.</p>
+        </div>
+      </div> 
+        <br>
+        Improving generalization—the ability of a model to perform accurately on unseen data—has been a long-standing problem of interest in deep learning.
+        Keskar et al. [2] show that sharp minima exhibit a large gap between train and test loss, whereas flat minima show a much smaller gap (Fig. 2).
+        This tendency motivated research to investigate the relationship between generalization and loss landscape.
+        Consequently, Sharpness-Aware Minimization (SAM) [3] jointly minimizes both empirical loss and sharpness, which is equivalent to minimizing the worst-case loss within a neighborhood of radius ρ.
+        <br>
+        <div class="container has-text-centered">
+          <img src="./template/resources/SAM.png">
+        </div>
+        <br>
+        The model parameters w are updated with the gradient computed at the estimated local maximum w+ε.
+        In practice, the local maximum is approximated via first-order Taylor expansion for the loss function around the current parameters, perturbing the parameters in the gradient direction with magnitude ρ.
+        <div class="container has-text-centered">
+          <img src="./template/resources/update.png">
+        </div>
+        <br>
+        The follow-up work WSAM [4] revisits sharpness as a regularization term by weighting the estimated sharpness.
+        When the weight hyperparameter γ is set to 0, the sharpness term vanishes and the optimization minimizes the empirical loss only. When γ = 0.5, WSAM is equivalent to SAM, while for 0.5 &lt γ &lt 1, the sharpness term is emphasized.
+        <div class="container has-text-centered">
+          <img src="./template/resources/WSAM.png">
+        </div>
       </div>
     </div>
   </section>
@@ -150,10 +177,23 @@
       <div class="container is-max-desktop">
         <div class="container has-text-centered">
         <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Hypothesis</h2>
-        <video controls autoplay loop playsinline muted width="80%">
-          <source src="./template/resources/1d_toy.mp4" type="video/mp4">
-        </video>    
+          <div class="news-imgWrap">
+            <video controls autoplay loop playsinline muted>
+              <source src="./template/resources/1d_toy.mp4" type="video/mp4">
+            </video>   
+            <p><b>Figure 3.</b> High-frequency regions requires sharp minima for accurate reconstruction, while low-frequency regions favor flat minima.</p>
+          </div>
         </div> 
+        <br>
+        However, directly applying SAM to 3DGS is suboptimal. The importance of sharpness for accurate reconstruction actually varies across pixels (Fig. 3), and since SAM regularize sharpness uniformly, it produces blurry results (Fig. 4).
+        <div class="container has-text-centered">
+          <div class="news-imgWrap">
+            <img src="./template/resources/sam_vs_ours.png">
+            <p><b>Figure 4.</b> Our method preserves fine details that SAM tends to oversmooth.</p>
+          </div>
+        </div>
+        <br>
+        Based on this intuition, <b>we hypothesize that for each Gaussian, the optimal perturbation magnitude ρ and regularization weight γ vary in correlation with image frequency.</b>
       </div>
     </div>
   </section>
@@ -163,10 +203,64 @@
       <div class="container is-max-desktop">
         <div class="container has-text-centered">
         <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Method</h2>
-        <figure>
-          <img src="./template/resources/method.png" width="85%">
-        </figure>
+            <div class="news-imgWrap">
+              <img src="./template/resources/method.png" width="85%">
+              <p><b>Figure 5.</b> Method overview.</p>
+            </div>
+        </div>
+        <br>
+        Before applying frequency adaptivity, we begin by perturbing the per-Gaussian attribute. 
+        Going a step further, we adapt the perturbation magnitude according to the local image frequency (Fig. 5).
+        Finally, we adapt the regularization weight according to the frequency of each Gaussian (Fig. 6).
+        <br>
+        
+        <div class="columns">
+
+          <div class="column">
+            <div class="news-imgWrap has-text-centered">
+              <video controls autoplay loop playsinline muted width="100%">
+                <source src="./template/resources/FAS.mp4" type="video/mp4">
+              </video>   
+              <p><b>Figure 6.</b> Frequency-adaptive perturbation magnitude.</p>
+            </div>
+          </div> 
+        
+          <div class="column">
+            <div class="news-imgWrap has-text-centered">
+              <video controls autoplay loop playsinline muted width="100%">
+                <source src="./template/resources/FAS.mp4" type="video/mp4">
+              </video>   
+              <p><b>Figure 7.</b> Frequency-adaptive sharpness weighting.</p>
+            </div>
+          </div> 
+        
+        </div>
+        
+        <br>
+        Fig. 8 ilustrates an overview of our algorithm.
+        <div class="container has-text-centered">
+          <div class="news-imgWrap">
+            <video controls autoplay loop playsinline muted width="80%">
+              <source src="./template/resources/FASR_algorithm.mp4" type="video/mp4">
+            </video>   
+            <p><b>Figure 8.</b> Overview of Frequency-Adaptive Sharpness Regularization (FASR).</p>
+          </div>
         </div> 
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="container has-text-centered">
+        <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Quantitative Results</h2>
+        <div class="news-imgWrap">
+          <p><b>Table 1.</b> Quantitative comparison on LLFF and MipNeRF-360 dataset. Considering the randomness of 3DGS, we conduct experiments with multiple runs, reporting mean ± std. Our method improves baselines across the board.</p>
+          <img src="./template/resources/quant.png">
+        </div>
+        </div> 
+        <br>
       </div>
     </div>
   </section>
@@ -183,13 +277,13 @@
         <div class="columns">
           <div class="column is-half">
             <div class="video-container">
-              <video class="video" id="xyalias1" loop playsinline muted src="./template/resources/3DGS_slider.mp4"></video>
+              <video class="video" id="xyalias1" loop playsinline autoplay muted src="./template/resources/3DGS_slider.mp4"></video>
               <canvas id="xyalias1Merge"></canvas>
             </div>
           </div>
           <div class="column is-half">
             <div class="video-container">
-              <video class="video" id="xyalias2" loop playsinline muted src="./template/resources/DropGaussian_slider.mp4"></video>
+              <video class="video" id="xyalias2" loop playsinline autoplay muted src="./template/resources/DropGaussian_slider.mp4"></video>
               <canvas id="xyalias2Merge"></canvas>
             </div>
           </div>
@@ -197,13 +291,13 @@
         <div class="columns">
           <div class="column is-half">
             <div class="video-container">
-              <video class="video" id="xyalias3" loop playsinline muted src="./template/resources/CoR-GS_slider.mp4"></video>
+              <video class="video" id="xyalias3" loop playsinline autoplay muted src="./template/resources/CoR-GS_slider.mp4"></video>
               <canvas id="xyalias3Merge"></canvas>
             </div>
           </div>
           <div class="column is-half">
             <div class="video-container">
-              <video class="video" id="xyalias4" loop playsinline muted src="./template/resources/NexusGS_slider.mp4"></video>
+              <video class="video" id="xyalias4" loop playsinline autoplay muted src="./template/resources/NexusGS_slider.mp4"></video>
               <canvas id="xyalias4Merge"></canvas>
             </div>
           </div>
@@ -218,20 +312,3 @@
 </body>
 </html>
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const videos = document.querySelectorAll("video");
-
-    videos.forEach(video => {
-      video.addEventListener('canplay', () => {
-        video.play().catch(e => console.warn("Autoplay blocked:", e));
-      });
-
-      video.addEventListener('pause', () => {
-        if (!video.ended) {
-          video.play().catch(e => {});
-        }
-      });
-    });
-  });
-</script>
