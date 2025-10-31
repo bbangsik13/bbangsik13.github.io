@@ -125,6 +125,7 @@
         <br>
         <b>We reformulate the 3DGS training objective, thereby explicitly guiding 3DGS to converge toward better generalization.</b> 
         <br>
+        <br>
         </div> 
       </div>
     </div>
@@ -147,20 +148,30 @@
         <br>
         which is equivalent to minimizing the worst-case loss within a neighborhood of radius ρ.
         <br>
+        <br>
       </div> 
         <div class="container has-text-centered">
           <img src="./template/resources/SAM.png">
-          The model parameters are updated with the local maximum loss. In practice, the local maximum is approximated via first-order Taylor expansion, perturbing the parameters in the gradient direction with magnitude ρ.
+        <br>
+        <br>
+        The model parameters are updated with the local maximum loss. In practice, the local maximum is approximated 
           <br>
+          via first-order Taylor expansion, perturbing the parameters in the gradient direction with magnitude ρ.
+        <br>
+        <br>
         </div>
         <div class="container has-text-centered">
           <img src="./template/resources/update.png">
+          <br>
+          <br>
           WSAM [4] revisits sharpness as a regularization term by weighting it. When the weight hyperparameter γ is 0, the optimization minimizes the empirical loss only. When γ = 0.5, it is equivalent to SAM, while for 0.5 &lt γ &lt 1, the sharpness term is emphasized.
           <br>
         </div>
         <div class="container has-text-centered">
+          <br>
           <img src="./template/resources/WSAM.png">
         </div>
+        <br>
       </div>
     </div>
   </section>
@@ -179,6 +190,7 @@
           <br>
           However, directly applying SAM to 3DGS is suboptimal. The importance of sharpness for accurate reconstruction varies across pixels (Fig. 3), and since SAM regularize sharpness uniformly, it produces blurry results (Fig. 4).
           <br>
+          <br>
         </div> 
         <div class="container has-text-centered">
           <div class="news-imgWrap">
@@ -189,7 +201,8 @@
           Based on this intuition, <b>we hypothesize that for each Gaussian, 
           <br>  
           the optimal perturbation magnitude ρ and regularization weight γ vary in correlation with image frequency.</b>
-          <br>
+        <br>
+        <br>
         </div>
       </div>
     </div>
@@ -207,7 +220,8 @@
           <br>
           Fig. 5 ilustrates an overview of our method. Before applying frequency adaptivity, we perturb the per-Gaussian attribute. 
             <br>
-          </div>
+        <br>
+      </div>
         
             <div class="news-imgWrap has-text-centered">
               <video controls autoplay loop playsinline muted width="70%">
@@ -219,14 +233,16 @@
               <br>
             </div>
 
-            <div class="news-imgWrap has-text-centered">
+        <br>
+        <div class="news-imgWrap has-text-centered">
               <video controls autoplay loop playsinline muted width="60%">
                 <source src="./template/resources/FAS.mp4" type="video/mp4">
               </video>   
               <p><b>Figure 7.</b> Frequency-adaptive sharpness weighting.</p>
               <br>
               Finally, we adapt the regularization weight according to the frequency of each Gaussian (Fig. 7).
-              <br>
+        <br>
+        <br>
             </div>
         
         <div class="container has-text-centered">
@@ -239,7 +255,8 @@
           <br>
           Fig. 8 summarizes our algorithm.
           <br>
-        </div> 
+        <br>
+      </div> 
       </div>
     </div>
   </section>
@@ -258,7 +275,8 @@
         <br>
         As shown in Tab. 1, Our method improves baselines across the board.
           <br>
-        </div> 
+        <br>
+      </div> 
         </div>
     </div>
   </section>
