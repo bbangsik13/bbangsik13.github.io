@@ -36,7 +36,12 @@
 }
 
 .video-container video {
-    display: none;
+  visibility: hidden;  
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
 }
   </style>
 </head>
@@ -325,45 +330,34 @@
       });
     });
 
-    function handleVideoReady(vid, cv) {
+    async function handleVideoReady(vid, cv) {
       cv.width = vid.videoWidth / 2;
       cv.height = vid.videoHeight;
 
-      var playPromise = vid.play();
-      
-      if (playPromise !== undefined) {
-        playPromise.then(_ => {
-          vid.style.display = 'none';
-          playVids(vid.id);
-        }).catch(error => {
-          console.error("비디오 재생 실패 " + vid.id + ". 오류: " + error);
-          vid.style.display = 'none';
-          playVids(vid.id);
-        });
-      } else {
-        vid.style.display = 'none';
-        playVids(vid.id);
+      try {
+        await vid.play();
+      } catch (e) {
+        console.warn("Autoplay failed, trying to resume after user gesture:", vid.id);
+        document.body.addEventListener('click', () => vid.play(), { once: true });
       }
-    }
 
+      vid.style.visibility = "hidden"; 
+      playVids(vid.id);
+    }
     /**
      */
-    function resizeAndPlay(element) {
+     function resizeAndPlay(element) {
       var cv = document.getElementById(element.id + "Merge");
       var vid = element;
 
-      if (!cv) {
-        console.error("no video or canvas: " + element.id);
-        return;
-      }
+      if (!cv) return;
 
-      // readyState >= 1 (HAVE_METADATA)
-      if (vid.readyState >= 1) {
+      if (vid.readyState >= 2) { 
         handleVideoReady(vid, cv);
       } else {
-        vid.addEventListener('loadedmetadata', function() {
+        vid.addEventListener('canplay', function() {
           handleVideoReady(vid, cv);
-        });
+        }, { once: true });
       }
     }
 
