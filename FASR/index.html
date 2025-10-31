@@ -20,23 +20,8 @@
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./template/css/index.css">
   
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./template/js/fontawesome.all.min.js"></script>
-  <script src="./template/js/bulma-carousel.min.js"></script>
-  <script src="./template/js/bulma-slider.min.js"></script>
-  <script src="./template/js/index.js"></script>
-  <script src="./template/js/app.js"></script>
-  <script src="./template/js/video_comparison.js"></script>
-
   <link rel="stylesheet" href="./template/css/dics.original.css">
-  <script src="./template/js/event_handler.js"></script>
-  <script src="./template/js/dics.original.js"></script>
-
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   
   <style>
 .video-container {
@@ -308,7 +293,7 @@
       <h2 class="title">References</h2>
       <a href="https://arxiv.org/abs/2308.04079">[1]</a> Kerbl, et al. "3D Gaussian Splatting for Real-Time Radiance Field Rendering" ACM TOG (2023)
       <br>
-      <a href="https://arxiv.org/abs/1609.04836">[2]</a> Keskar, et al. "On Large-Batch Training for Deep Learning: Generalization Gap and Sharp Minima" ICLR (2017).
+      <a href="https://arxiv.org/abs/1609/04836">[2]</a> Keskar, et al. "On Large-Batch Training for Deep Learning: Generalization Gap and Sharp Minima" ICLR (2017).
       <br>
       <a href="https://arxiv.org/abs/2010.01412">[3]</a> Foret, et al. "Sharpness-Aware Minimization for Efficiently Improving Generalization" ICLR (2021).
       <br>
@@ -317,6 +302,165 @@
   </section>
 
   
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="./template/js/fontawesome.all.min.js"></script> 
+  <script src="./template/js/bulma-carousel.min.js"></script>
+  <script src="./template/js/bulma-slider.min.js"></script>
+  <script src="./template/js/index.js"></script>
+  <script src="./template/js/app.js"></script>
+  
+  <script src="./template/js/event_handler.js"></script>
+  <script src="./template/js/dics.original.js"></script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var videos = document.querySelectorAll('.video');
+      videos.forEach(function(video) {
+        resizeAndPlay(video);
+      });
+    });
+
+    function handleVideoReady(vid, cv) {
+      cv.width = vid.videoWidth / 2;
+      cv.height = vid.videoHeight;
+
+      var playPromise = vid.play();
+      
+      if (playPromise !== undefined) {
+        playPromise.then(_ => {
+          vid.style.display = 'none';
+          playVids(vid.id);
+        }).catch(error => {
+          console.error("비디오 재생 실패 " + vid.id + ". 오류: " + error);
+          vid.style.display = 'none';
+          playVids(vid.id);
+        });
+      } else {
+        vid.style.display = 'none';
+        playVids(vid.id);
+      }
+    }
+
+    /**
+     */
+    function resizeAndPlay(element) {
+      var cv = document.getElementById(element.id + "Merge");
+      var vid = element;
+
+      if (!cv) {
+        console.error("no video or canvas: " + element.id);
+        return;
+      }
+
+      // readyState >= 1 (HAVE_METADATA)
+      if (vid.readyState >= 1) {
+        handleVideoReady(vid, cv);
+      } else {
+        vid.addEventListener('loadedmetadata', function() {
+          handleVideoReady(vid, cv);
+        });
+      }
+    }
+
+    function playVids(videoId) {
+      var videoMerge = document.getElementById(videoId + "Merge");
+      var vid = document.getElementById(videoId);
+
+      if (!videoMerge || !vid) {
+        console.error("no video or canvas: " + videoId);
+        return;
+      }
+
+      var position = 0.5;
+      var mergeContext = videoMerge.getContext("2d");
+      let drawRequested = false;
+
+      function trackLocation(e) {
+        var bcr = videoMerge.getBoundingClientRect();
+        position = ((e.pageX - bcr.x) / bcr.width);
+        position = Math.min(Math.max(position, 0), 1);
+      }
+
+      function trackLocationTouch(e) {
+        var bcr = videoMerge.getBoundingClientRect();
+        position = ((e.touches[0].pageX - bcr.x) / bcr.width);
+        position = Math.min(Math.max(position, 0), 1);
+      }
+
+      videoMerge.addEventListener("mousemove",  trackLocation, false); 
+      videoMerge.addEventListener("touchstart", trackLocationTouch, false);
+      videoMerge.addEventListener("touchmove",  trackLocationTouch, false);
+
+      function drawLoop() {
+        drawRequested = false;
+        
+        if (!videoMerge || !vid || !mergeContext) {
+            return;
+        }
+
+        var canvasWidth = videoMerge.width;
+        var canvasHeight = videoMerge.height;
+
+        var vidWidth = vid.videoWidth;
+        var vidHeight = vid.videoHeight;
+
+        if (vidWidth === 0 || vidHeight === 0) {
+            requestAnimationFrame(drawLoop);
+            return;
+        }
+
+        mergeContext.clearRect(0, 0, canvasWidth, canvasHeight);
+
+        mergeContext.drawImage(
+            vid,
+            0, 0, vidWidth / 2, vidHeight,
+            0, 0, canvasWidth, canvasHeight
+        );
+
+        mergeContext.save();
+        mergeContext.beginPath();
+        mergeContext.rect(canvasWidth * position, 0, canvasWidth * (1 - position), canvasHeight);
+        mergeContext.closePath();
+        mergeContext.clip();
+
+        mergeContext.drawImage(
+            vid,
+            vidWidth / 2, 0, vidWidth / 2, vidHeight,
+            0, 0, canvasWidth, canvasHeight
+        );
+
+        mergeContext.restore(); 
+
+        mergeContext.beginPath();
+        mergeContext.moveTo(canvasWidth * position, 0);
+        mergeContext.lineTo(canvasWidth * position, canvasHeight);
+        mergeContext.strokeStyle = "#AAAAAA";
+        mergeContext.lineWidth = 5;            
+        mergeContext.stroke();
+
+        requestAnimationFrame(drawLoop);
+        drawRequested = true;
+      }
+
+      vid.addEventListener('play', function() {
+        if (!drawRequested) {
+            drawRequested = true;
+            requestAnimationFrame(drawLoop);
+        }
+      }, false);
+
+      if (!vid.paused && !drawRequested) {
+          drawRequested = true;
+          requestAnimationFrame(drawLoop);
+      }
+    }
+  </script>
+
 </body>
 </html>
 
