@@ -116,7 +116,7 @@
         <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Summary</h2>
         <div class="news-imgWrap">
           <img src="./template/resources/teaser.png" width="50%">
-          <p><b>Figure 1.</b> Given 8 training views, our method maintains low Average Error across interpolated novel views, whereas the baseline exhibits overfitting. Plots are means and standard deviations over 10 runs.</p>
+          <p><b>Figure 1.</b> Given eight training views, our method maintains low Average Error across interpolated novel views, whereas the baseline exhibits overfitting. Plots are means and standard deviations over ten runs.</p>
         </div>
         <br>
         3D Gaussian Splatting (3DGS) [1] lacks generalization across novel viewpoints in a few-shot scenario
@@ -164,7 +164,7 @@
           <img src="./template/resources/update.png">
           <br>
           <br>
-          WSAM [4] revisits sharpness as a regularization term by weighting it. When the weight hyperparameter γ is 0, the optimization minimizes the empirical loss only. When γ = 0.5, it is equivalent to SAM, while for 0.5 &lt γ &lt 1, the sharpness term is emphasized.
+          Sharpness can be interpreted as a regularization term, Weighted SAM (WSAM) [4]. When the weight γ is 0, the optimization minimizes the empirical loss only. When γ = 0.5, it is equivalent to SAM, while for 0.5 &lt γ &lt 1, the sharpness term is emphasized.
           <br>
         </div>
         <div class="container has-text-centered">
@@ -220,7 +220,7 @@
               <p><b>Figure 5.</b> Method overview.</p>
             </div>
           <br>
-          Fig. 5 ilustrates an overview of our method. Before applying frequency adaptivity, we perturb the per-Gaussian attribute. 
+          Fig. 5 ilustrates an overview of our method. <br>Before applying frequency adaptivity, we first estimate local sharpness of each Gaussian attribute independently. 
             <br>
         <br>
       </div>
@@ -271,7 +271,7 @@
         <div class="news-imgWrap">
           <p><b>Table 1.</b> Quantitative comparison on LLFF and MipNeRF-360 dataset. 
             <br>
-            Considering the randomness of 3DGS, we conduct experiments with multiple runs, reporting mean ± std.</p>
+            Considering the randomness of 3DGS, we conduct experiments with multiple runs <br>(ten runs for LLFF; five runs for MipNeRF-360), reporting mean ± std.</p>
           <img src="./template/resources/quant.png">
         </div>
         <br>
