@@ -54,10 +54,6 @@
           <div class="column has-text-centered">
             <h2 class="title is-2 publication-title"><p style="line-height:140%">Frequency-Adaptive Sharpness Regularization <br> for Improving 3D Gaussian Splatting Generalization</h2></p>
             <div class="is-size-5 publication-authors">
-              <br>
-              <h2 class="title is-5 has-text-centered">Our paper is available as a preprint. The project page and code are under construction.
-              </h2>
-              
               <hr></span>
               <span class="author-block"> <p style="font-size:23px">
                 <a href="https://bbangsik13.github.io/">Youngsik Yun</a><sup>1</sup>, 
@@ -72,25 +68,16 @@
             </div>
             <div class="column has-text-centered">
               <div class="publication-links">
-                <span class="link-block">
-                  <a target="_blank" href="template/resources/Frequency-Adaptive Sharpness Regularization for Improving 3D Gaussian Splatting Generalization.pdf" 
-                     class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                    </span>
-                    <span>pdf</span>
-                  </a>
-                </span>
                 <!-- ArXiv Link. -->
-                <!-- <span class="link-block">
-                  <a target="_blank" 
+                <span class="link-block">
+                  <a target="_blank" href=""
                      class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                         <i class="ai ai-arxiv"></i>
                     </span>
                     <span>arXiv</span>
                   </a>
-                </span> -->
+                </span>
                 <!-- Code Link. -->
                 <span class="link-block">
                   <a target="_blank" href="https://github.com/bbangsik13/FASR" 
@@ -115,15 +102,33 @@
         <div class="container has-text-centered">
         <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Summary</h2>
         <div class="news-imgWrap">
-          <img src="./template/resources/teaser.png" width="50%">
-          <p><b>Figure 1.</b> Given eight training views, our method maintains low Average Error across interpolated novel views, whereas the baseline exhibits overfitting. Plots are means and standard deviations over ten runs.</p>
+          <video controls autoplay loop playsinline muted>
+            <source src="./template/resources/teaser.mp4" type="video/mp4">
+          </video>   
+          <p><b>Figure 1.</b> While 3DGS achieves high fidelity in training viewpoints, 
+            <br>
+            it suffers from floating artifacts in novel viewpoints, indicating poor generalization. 
+            <br>
+            Our method enhances rendering quality in novel views.
+          </p>
         </div>
         <br>
         3D Gaussian Splatting (3DGS) [1] lacks generalization across novel viewpoints in a few-shot scenario
         <br>
         because it overfits to the sparse observations (Fig. 1). 
         <br>
-        <b>We reformulate the 3DGS training objective, thereby explicitly guiding 3DGS to converge toward better generalization.</b> 
+        <b>We reformulate the 3DGS training objective, thereby explicitly guiding 3DGS to converge toward better generalization  (Fig. 2).</b> 
+        <br>
+        <br>
+        <div class="news-imgWrap">
+          <img src="./template/resources/teaser.png" width="40%">
+          <p><b>Figure 2.</b> Given eight training views, our method maintains low Average Error across interpolated novel views, 
+            <br>
+            whereas the baseline exhibits overfitting. Plots are means and standard deviations over ten runs.
+            <br>
+            Our proposed optimization algorithm narrows the generalization gap, thereby improving quality in novel viewpoints.
+          </p>
+        </div>
         <br>
         <br>
         </div> 
@@ -139,10 +144,10 @@
         <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Motivation</h2>
         <div class="news-imgWrap">
           <img src="./template/resources/motivation.png">
-          <p><b>Figure 2.</b> Conceptual 1D Loss Landscape of Flat and Sharp Minima [2].</p>
+          <p><b>Figure 3.</b> Conceptual 1D Loss Landscape of Flat and Sharp Minima [2].</p>
         </div>
         <br>
-        Keskar et al. [2] show that flat minimum better generalize then sharp minimum (Fig. 2). 
+        Flat minimum is known to promote better generalization than sharp minimum (Fig. 3). 
         <br>
         Motivated by this tendency, Sharpness-Aware Minimization (SAM) [3] jointly minimizes both empirical loss and sharpness, 
         <br>
@@ -151,7 +156,7 @@
         <br>
       </div> 
         <div class="container has-text-centered">
-          <img src="./template/resources/SAM.png">
+          <img src="./template/resources/SAM.png" width="75%">
         <br>
         <br>
         The model parameters are updated with the local maximum loss. In practice, the local maximum is approximated 
@@ -164,48 +169,43 @@
           <img src="./template/resources/update.png">
           <br>
           <br>
-          Sharpness can be interpreted as a regularization term, Weighted SAM (WSAM) [4]. When the weight γ is 0, the optimization minimizes the empirical loss only. When γ = 0.5, it is equivalent to SAM, while for 0.5 &lt γ &lt 1, the sharpness term is emphasized.
           <br>
-        </div>
-        <div class="container has-text-centered">
-          <br>
-          <img src="./template/resources/WSAM.png">
-        </div>
-        <br>
       </div>
-    </div>
-  </section>
-
-  <section class="hero teaser">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
         <div class="container has-text-centered">
-        <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Hypothesis</h2>
           <div class="news-imgWrap">
             <video controls autoplay loop playsinline muted>
               <source src="./template/resources/1d_toy.mp4" type="video/mp4">
             </video>   
-            <p><b>Figure 3.</b> High-frequency regions requires sharp minima for accurate reconstruction, 
+            <p><b>Figure 4.</b> High-frequency regions, such as edges, requires sharp minima for accurate reconstruction, 
               <br>
               while low-frequency regions favor flat minima.</p>
           </div>
           <br>
-          However, directly applying SAM to 3DGS is suboptimal. The importance of sharpness for accurate reconstruction varies across pixels (Fig. 3), and since SAM regularize sharpness uniformly, it produces blurry results (Fig. 4).
+          However, directly applying SAM to 3DGS is suboptimal 
+          <br>
+          because <b>the importance of sharpness for accurate reconstruction varies across pixels</b> (Fig. 4)
+          <br>
+          Therefore, finding a flat minimum for all Gaussians is problematic
+          <br>
+          as it over-penalizes high-frequency regions and under-penalizes low-frequency regions.
           <br>
           <br>
-        </div> 
-        <div class="container has-text-centered">
-          <div class="news-imgWrap">
-            <img src="./template/resources/sam_vs_ours.png">
-            <p><b>Figure 4.</b> Our method preserves fine details that SAM tends to oversmooth.</p>
-          </div>
           <br>
-          Based on this intuition, <b>we hypothesize that for each Gaussian, 
-          <br>  
-          the optimal perturbation magnitude ρ and regularization weight γ vary in correlation with image frequency.</b>
-        <br>
-        <br>
+        <div class="news-imgWrap">
+          <video controls autoplay loop playsinline muted  width="80%">
+            <source src="./template/resources/SAM_perturbation.mp4" type="video/mp4">
+          </video>   
+          <p><b>Figure 5.</b> In the low-frequency region, the perturbation is too weak to be meaningful, 
+            <br>
+            and in the high-frequency region, the perturbation is too strong, resulting in an overshoot.</p>
         </div>
+        <br>
+        Furthermore, with a uniform neighborhood radius, 
+        <br>
+        SAM fails to capture the worst-case, leading to inaccurate sharpness estimation (Fig. 5). 
+        <br>
+        <br>
+        <br>
       </div>
     </div>
   </section>
@@ -215,23 +215,18 @@
       <div class="container is-max-desktop">
         <div class="container has-text-centered">
         <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Method</h2>
-            <div class="news-imgWrap">
-              <img src="./template/resources/method.png" width="85%">
-              <p><b>Figure 5.</b> Method overview.</p>
-            </div>
-          <br>
-          Fig. 5 ilustrates an overview of our method. <br>Before applying frequency adaptivity, we first estimate local sharpness of each Gaussian attribute independently. 
-            <br>
-        <br>
-      </div>
-        
             <div class="news-imgWrap has-text-centered">
               <video controls autoplay loop playsinline muted width="70%">
                 <source src="./template/resources/FAP.mp4" type="video/mp4">
               </video>   
               <p><b>Figure 6.</b> Frequency-adaptive perturbation magnitude.</p>
               <br>
-              Then, we adapt the perturbation magnitude according to the local image frequency (Fig. 6).
+              To this end, we increase the perturbation magnitude for the Gaussian representing low-frequency 
+              <br>
+              and reduce the perturbation magnitude for high-frequency ones. 
+              <br>
+              Thereby, appropriately estimating sharpness (Fig. 6).
+              <br>
               <br>
             </div>
 
@@ -242,7 +237,12 @@
               </video>   
               <p><b>Figure 7.</b> Frequency-adaptive sharpness weighting.</p>
               <br>
-              Finally, we adapt the regularization weight according to the frequency of each Gaussian (Fig. 7).
+              And we increase the regularization weight for the Gaussian representing low-frequency 
+              <br>
+              and reduce the regularization weight for high-frequency ones. 
+              <br>
+              Thereby, encourage a flatter loss landscape while retaining sharpness for fine details (Fig. 7).
+        <br>
         <br>
         <br>
             </div>
@@ -258,6 +258,8 @@
           Fig. 8 summarizes our algorithm.
           <br>
         <br>
+        <br>
+        <br>
       </div> 
       </div>
     </div>
@@ -267,15 +269,52 @@
     <div class="hero-body">
       <div class="container is-max-desktop">
         <div class="container has-text-centered">
+        <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Convergence Behavior</h2>
+        <div class="news-imgWrap">
+          <video controls autoplay loop playsinline muted>
+            <source src="./template/resources/trajectory.mp4" type="video/mp4">
+          </video>   
+          <p><b>Figure 9.</b> To analyze the convergence behaviors of 3DGS, SAM, and Ours, 
+            <br>
+            we visualize the reconstruction loss landscape and the optimization trajectories.</p>
+          </div>
+        <br>
+        SAM converges to a flat minimum, effectively reducing the sharpness and the test loss.
+        <br>
+        Our method does not converge to a flat minimum. 
+        <br>
+        Nevertheless, it slightly reduces the sharpness and effectively reduces the test loss.
+        <br>
+        <b>Interestingly, our method yields a sharper loss landscape than SAM but achieves lower test loss.</b>
+        <br>
+        <b>This suggests that sharpness is not strictly correlated with generalization.</b>
+        <br>
+        To better generalize, retaining sharpness for fine detail is crucial while regularizing sharpness, 
+        <br>
+        as supported by visual comparisons (Fig. 9).
+          <br>
+        <br>
+      </div> 
+        </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="container has-text-centered">
         <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Quantitative Results</h2>
         <div class="news-imgWrap">
-          <p><b>Table 1.</b> Quantitative comparison on LLFF and MipNeRF-360 dataset. 
+          <img src="./template/resources/boxplot.png">
+          <p><b>Figure 10.</b> Quantitative evaluation on LLFF dataset (3 views).
             <br>
-            Considering the randomness of 3DGS, we conduct experiments with multiple runs <br>(ten runs for LLFF; five runs for MipNeRF-360), reporting mean ± std.</p>
-          <img src="./template/resources/quant.png">
+            Considering the randomness of 3DGS, we conduct experiments with ten independent runs.
+          </p>
         </div>
         <br>
-        As shown in Tab. 1, Our method improves baselines across the board.
+        As shown in Tab. 1, our method outperforms 3DGS across all metrics, 
+        <br>
+        and it consistently provides additional performance gains to all other baselines.
           <br>
         <br>
       </div> 
@@ -353,8 +392,6 @@
       <a href="https://arxiv.org/abs/1609/04836">[2]</a> Keskar, et al. "On Large-Batch Training for Deep Learning: Generalization Gap and Sharp Minima" ICLR (2017).
       <br>
       <a href="https://arxiv.org/abs/2010.01412">[3]</a> Foret, et al. "Sharpness-Aware Minimization for Efficiently Improving Generalization" ICLR (2021).
-      <br>
-      <a href="https://arxiv.org/abs/2305.15817">[4]</a> Yue, et al. "Sharpness-Aware Minimization Revisited: Weighted Sharpness as a Regularization Term" KDD (2023).
     </div>
   </section>
 
