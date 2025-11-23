@@ -183,7 +183,7 @@
           <br>
           However, directly applying SAM to 3DGS is suboptimal 
           <br>
-          because <b>the importance of sharpness for accurate reconstruction varies across pixels</b> (Fig. 4)
+          <b>because the importance of sharpness for accurate reconstruction varies across pixels (Fig. 4)</b>
           <br>
           Therefore, finding a flat minimum for all Gaussians is problematic
           <br>
@@ -200,7 +200,7 @@
             and in the high-frequency region, the perturbation is too strong, resulting in an overshoot.</p>
         </div>
         <br>
-        Furthermore, with a uniform neighborhood radius, 
+        Moreover, with a uniform neighborhood radius, 
         <br>
         SAM fails to capture the worst-case, leading to inaccurate sharpness estimation (Fig. 5). 
         <br>
@@ -276,23 +276,21 @@
           </video>   
           <p><b>Figure 9.</b> To analyze the convergence behaviors of 3DGS, SAM, and Ours, 
             <br>
-            we visualize the reconstruction loss landscape and the optimization trajectories.</p>
+            we visualize the reconstruction loss landscape and the corresponding optimization trajectories.</p>
           </div>
         <br>
-        As shown in Fig.9, SAM converges to a flat minimum, effectively reducing the sharpness and the test loss.
-        <br>
-        Our method does not converge to a flat minimum. 
-        <br>
-        Nevertheless, it slightly reduces the sharpness and effectively reduces the test loss.
-        <br>
-        <b>Interestingly, our method yields a sharper loss landscape than SAM but achieves lower test loss.</b>
+        <b>Interestingly, our  method converges to sharper minima than SAM but achieves lower test loss (Fig. 9).</b>
         <br>
         <b>This suggests that sharpness is not strictly correlated with generalization, supporting our hyphothesis.</b>
         <br>
         To better generalize, retaining sharpness for fine detail is crucial while regularizing sharpness, 
         <br>
-        as supported by visual comparisons.
+        as supported by visual comparisons (Fig. 10).
           <br>
+        <div class="news-imgWrap">
+          <img src="./template/resources/sam_vs_ours.png">
+          <p><b>Figure 10.</b> Our method preserves fine details that SAM tends to oversmooth.</p>
+        </div>
         <br>
       </div> 
         </div>
@@ -306,13 +304,13 @@
         <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Quantitative Results</h2>
         <div class="news-imgWrap">
           <img src="./template/resources/boxplot.png">
-          <p><b>Figure 10.</b> Quantitative evaluation on LLFF dataset (3 views).
+          <p><b>Figure 11.</b> Quantitative evaluation on LLFF dataset (3 views).
             <br>
             Considering the randomness of 3DGS, we conduct experiments with ten independent runs.
           </p>
         </div>
         <br>
-        As shown in Fig. 10, our method outperforms 3DGS across all metrics, 
+        As shown in Fig. 11, our method outperforms 3DGS across all metrics, 
         <br>
         and it consistently provides additional performance gains to all other baselines.
           <br>
