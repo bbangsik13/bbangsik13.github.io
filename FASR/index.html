@@ -119,34 +119,39 @@
       <div class="container is-max-desktop">
         <div class="container has-text-centered">
         <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Summary</h2>
+        <div class="box" style="box-shadow: none; border: 1px solid #dbdbdb; margin-bottom: 2rem;">
         <div class="news-imgWrap">
           <video controls autoplay loop playsinline muted>
             <source src="./template/resources/teaser.mp4" type="video/mp4">
           </video>   
-          <p><b>Figure 1.</b> While 3DGS achieves high fidelity in training viewpoints, 
+          <p><br><b>Figure 1.</b> While 3DGS achieves high fidelity in training viewpoints, it suffers from floating artifacts in novel viewpoints,
             <br>
-            it suffers from floating artifacts in novel viewpoints, indicating poor generalization. 
-            <br>
-            Our method enhances rendering quality in novel views.
+            indicating poor generalization. Our method enhances rendering quality in novel views.
           </p>
         </div>
+      </div>
+        <br>
         <br>
         3D Gaussian Splatting (3DGS) [1] lacks generalization across novel viewpoints in a few-shot scenario
         <br>
         because it overfits to the sparse observations (Fig. 1). 
         <br>
-        <b>We reformulate the 3DGS training objective, thereby explicitly guiding 3DGS to converge toward better generalization  (Fig. 2).</b> 
+        <b>We reformulate the 3DGS training objective, guiding 3DGS to converge toward a better generalization solution (Fig. 2).</b> 
         <br>
         <br>
+        <br>
+        <br>
+        <div class="box" style="box-shadow: none; border: 1px solid #dbdbdb; margin-bottom: 2rem;">
         <div class="news-imgWrap">
           <img src="./template/resources/teaser.png" width="40%">
-          <p><b>Figure 2.</b> Given eight training views, our method maintains low Average Error across interpolated novel views, 
+          <p><br><b>Figure 2.</b> Given eight training views, our method maintains low Average Error across interpolated novel views, 
             <br>
             whereas the baseline exhibits overfitting. Plots are means and standard deviations over ten runs.
-            <br>
-            Our proposed optimization algorithm narrows the generalization gap, thereby improving quality in novel viewpoints.
           </p>
         </div>
+      </div>
+        <br>
+        <br>
         <br>
         <br>
         </div> 
@@ -160,10 +165,13 @@
       <div class="container is-max-desktop">
         <div class="container has-text-centered">
         <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Motivation</h2>
+        <div class="box" style="box-shadow: none; border: 1px solid #dbdbdb; margin-bottom: 2rem;">
         <div class="news-imgWrap">
           <img src="./template/resources/motivation.png">
-          <p><b>Figure 3.</b> Conceptual 1D Loss Landscape of Flat and Sharp Minima [2].</p>
+          <p><br><b>Figure 3.</b> Conceptual 1D Loss Landscape of Flat and Sharp Minima [2].</p>
         </div>
+      </div>
+        <br>
         <br>
         Flat minimum is known to promote better generalization than sharp minimum (Fig. 3). 
         <br>
@@ -172,14 +180,17 @@
         which is equivalent to minimizing the worst-case loss within a neighborhood of radius ρ.
         <br>
         <br>
+        <br>
       </div> 
         <div class="container has-text-centered">
           <img src="./template/resources/SAM.png" width="75%">
         <br>
         <br>
+        <br>
         The model parameters are updated with the local maximum loss. In practice, the local maximum is approximated 
           <br>
           via first-order Taylor expansion, perturbing the parameters in the gradient direction with magnitude ρ.
+        <br>
         <br>
         <br>
         </div>
@@ -188,16 +199,19 @@
           <br>
           <br>
           <br>
-      </div>
+                    <br>
+        </div>
         <div class="container has-text-centered">
+          <div class="box" style="box-shadow: none; border: 1px solid #dbdbdb; margin-bottom: 2rem;">
           <div class="news-imgWrap">
             <video controls autoplay loop playsinline muted>
               <source src="./template/resources/1d_toy.mp4" type="video/mp4">
             </video>   
-            <p><b>Figure 4.</b> High-frequency regions, such as edges, requires sharp minima for accurate reconstruction, 
+            <p><br><b>Figure 4.</b> High-frequency regions, such as edges, requires sharp minima for accurate reconstruction, 
               <br>
               while low-frequency regions favor flat minima.</p>
-          </div>
+          </div></div>
+          <br>
           <br>
           However, directly applying SAM to 3DGS is suboptimal 
           <br>
@@ -209,14 +223,17 @@
           <br>
           <br>
           <br>
-        <div class="news-imgWrap">
+          <div class="box" style="box-shadow: none; border: 1px solid #dbdbdb; margin-bottom: 2rem;">
+          <div class="news-imgWrap">
           <video controls autoplay loop playsinline muted  width="80%">
             <source src="./template/resources/SAM_perturbation.mp4" type="video/mp4">
           </video>   
-          <p><b>Figure 5.</b> In the low-frequency region, the perturbation is too weak to be meaningful, 
+          <p><br><b>Figure 5.</b> In the low-frequency region, the perturbation is too weak to be meaningful, 
             <br>
             and in the high-frequency region, the perturbation is too strong, resulting in an overshoot.</p>
         </div>
+      </div>
+      <br>
         <br>
         Moreover, with a uniform neighborhood radius, 
         <br>
@@ -224,8 +241,11 @@
         <br>
         <br>
         <br>
+        <br>
+        <br>
       </div>
     </div>
+  </div>
   </section>
 
   <section class="hero teaser">
@@ -233,11 +253,16 @@
       <div class="container is-max-desktop">
         <div class="container has-text-centered">
         <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Method</h2>
-            <div class="news-imgWrap has-text-centered">
+        <div class="box" style="box-shadow: none; border: 1px solid #dbdbdb; margin-bottom: 2rem;">
+        <div class="news-imgWrap has-text-centered">
               <video controls autoplay loop playsinline muted width="70%">
                 <source src="./template/resources/FAP.mp4" type="video/mp4">
               </video>   
-              <p><b>Figure 6.</b> Frequency-adaptive perturbation magnitude.</p>
+              <p><br><b>Figure 6.</b> Frequency-adaptive perturbation magnitude.</p>
+        </div>
+      </div>
+              
+              <br>
               <br>
               To this end, we increase the perturbation magnitude for the Gaussian representing low-frequency 
               <br>
@@ -246,35 +271,45 @@
               Thereby, appropriately estimating sharpness (Fig. 6).
               <br>
               <br>
-            </div>
+              <br>
 
         <br>
-        <div class="news-imgWrap has-text-centered">
-              <video controls autoplay loop playsinline muted width="60%">
-                <source src="./template/resources/FAS.mp4" type="video/mp4">
-              </video>   
-              <p><b>Figure 7.</b> Frequency-adaptive sharpness weighting.</p>
-              <br>
-              And we increase the regularization weight for the Gaussian representing low-frequency 
-              <br>
-              and reduce the regularization weight for high-frequency ones. 
-              <br>
-              Thereby, encourage a flatter loss landscape while retaining sharpness for fine details (Fig. 7).
+
+      <div class="container has-text-centered">
+        <div class="box" style="box-shadow: none; border: 1px solid #dbdbdb; margin-bottom: 2rem;">
+        <div class="news-imgWrap">
+          <video controls autoplay loop playsinline muted width="60%">
+            <source src="./template/resources/FAS.mp4" type="video/mp4">
+          </video>   
+          <p><br><b>Figure 7.</b> Frequency-adaptive sharpness weighting.</p>
+        </div>
+      </div>
+      <br>
+        <br>
+        And we increase the regularization weight for the Gaussian representing low-frequency 
+        <br>
+        and reduce the regularization weight for high-frequency ones. 
+        <br>
+        Thereby, encourage a flatter loss landscape while retaining sharpness for fine details (Fig. 7).
         <br>
         <br>
         <br>
-            </div>
-        
+        <br>
         <div class="container has-text-centered">
+          <div class="box" style="box-shadow: none; border: 1px solid #dbdbdb; margin-bottom: 2rem;">
           <div class="news-imgWrap">
             <video controls autoplay loop playsinline muted width="80%">
               <source src="./template/resources/FASR_algorithm.mp4" type="video/mp4">
             </video>   
-            <p><b>Figure 8.</b> Algorithm of Frequency-Adaptive Sharpness Regularization (FASR).</p>
+            <p><br><b>Figure 8.</b> Algorithm of Frequency-Adaptive Sharpness Regularization (FASR).</p>
           </div>
+        </div>
           <br>
-          Fig. 8 summarizes our algorithm.
           <br>
+          Fig. 8, summarizes our algorithm.
+          <br>
+        <br>
+        <br>
         <br>
         <br>
         <br>
@@ -288,14 +323,17 @@
       <div class="container is-max-desktop">
         <div class="container has-text-centered">
         <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Convergence Behavior</h2>
+        <div class="box" style="box-shadow: none; border: 1px solid #dbdbdb; margin-bottom: 2rem;">
         <div class="news-imgWrap">
           <video controls autoplay loop playsinline muted>
             <source src="./template/resources/trajectory.mp4" type="video/mp4">
           </video>   
-          <p><b>Figure 9.</b> To analyze the convergence behaviors of 3DGS, SAM, and Ours, 
+          <p><br><b>Figure 9.</b> To analyze the convergence behaviors of 3DGS, SAM, and Ours, 
             <br>
             we visualize the reconstruction loss landscape and the corresponding optimization trajectories.</p>
           </div>
+        </div>
+        <br>
         <br>
         <b>Interestingly, our  method converges to sharper minima than SAM but achieves lower test loss (Fig. 9).</b>
         <br>
@@ -304,11 +342,17 @@
         To better generalize, retaining sharpness for fine detail is crucial while regularizing sharpness, 
         <br>
         as supported by visual comparisons (Fig. 10).
-          <br>
+        <br>
+        <br>
+        <br>
+        <div class="box" style="box-shadow: none; border: 1px solid #dbdbdb; margin-bottom: 2rem;">
         <div class="news-imgWrap">
           <img src="./template/resources/sam_vs_ours.png">
-          <p><b>Figure 10.</b> Our method preserves fine details that SAM tends to oversmooth.</p>
+          <p><br><b>Figure 10.</b> Our method preserves fine details that SAM tends to oversmooth.</p>
         </div>
+      </div>
+        <br>
+        <br>
         <br>
       </div> 
         </div>
@@ -320,18 +364,22 @@
       <div class="container is-max-desktop">
         <div class="container has-text-centered">
         <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Quantitative Results</h2>
+        <div class="box" style="box-shadow: none; border: 1px solid #dbdbdb; margin-bottom: 2rem;">
         <div class="news-imgWrap">
           <img src="./template/resources/boxplot.png">
-          <p><b>Figure 11.</b> Quantitative evaluation on LLFF dataset (3 views).
+          <p><br><b>Figure 11.</b> Quantitative evaluation on LLFF dataset (3 views).
             <br>
             Considering the randomness of 3DGS, we conduct experiments with ten independent runs.
           </p>
         </div>
+        </div>
         <br>
-        As shown in Fig. 11, our method outperforms 3DGS across all metrics, 
         <br>
-        and it consistently provides additional performance gains to all other baselines.
+        As shown in Fig. 11, our method outperforms baselines across all metrics.
           <br>
+        <br>
+        <br>
+        <br>
         <br>
       </div> 
         </div>
@@ -347,6 +395,7 @@
         <br>
         <br>
         <br>
+        <div class="box" style="box-shadow: none; border: 1px solid #dbdbdb; margin-bottom: 2rem;">
         <div class="columns">
           <div class="column is-half">
             <div class="video-container">
@@ -396,7 +445,7 @@
           </div>
         </div>
         </div> 
-      </div>
+      </div></div>
     </div>
   </section>
   
