@@ -1,4 +1,13 @@
 papers:
+  - title: "Frequency-Adaptive Sharpness Regularization for Improving 3D Gaussian Splatting Generalization"
+    authors: "<b>Youngsik Yun</b>, Dongjun Gu, Youngjung Uh"
+    project: "https://bbangsik13.github.io/FASR"
+    code: "https://github.com/bbangsik13/FASR"
+    paper_pdf: ""
+    venue: "Preprint"
+    selected: y
+    image: "/assets/publications/FASR_preview.png"
+
   - title: "Compensating Spatiotemporally Inconsistent Observations for Online Dynamic 3D Gaussian Splatting"
     authors: "<b>Youngsik Yun</b>, Jeongmin Bae, Hyunseung Son, Seoha Kim, Hahyun Lee, Gun Bang, Youngjung Uh"
     project: "https://bbangsik13.github.io/OR2"
