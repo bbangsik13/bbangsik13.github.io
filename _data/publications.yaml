@@ -3,7 +3,7 @@ papers:
     authors: "<b>Youngsik Yun</b>, Dongjun Gu, Youngjung Uh"
     project: "https://bbangsik13.github.io/FASR"
     code: "https://github.com/bbangsik13/FASR"
-    paper_pdf: ""
+    paper_pdf: "https://arxiv.org/abs/2511.17918"
     venue: "Preprint"
     selected: y
     image: "/assets/publications/FASR_preview.png"
