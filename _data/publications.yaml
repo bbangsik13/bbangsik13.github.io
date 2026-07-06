@@ -1,10 +1,10 @@
 papers:
-  - title: "Frequency-Adaptive Sharpness Regularization for Improving 3D Gaussian Splatting Generalization"
+  - title: "Do Flat Minima Improve Sparse Novel View Synthesis?"
     authors: "<b>Youngsik Yun</b>, Dongjun Gu, Youngjung Uh"
-    project: "https://bbangsik13.github.io/FASR"
-    code: "https://github.com/bbangsik13/FASR"
+    # project: "https://bbangsik13.github.io/FASR"
+    # code: "https://github.com/bbangsik13/FASR"
     paper_pdf: "https://arxiv.org/abs/2511.17918"
-    venue: "Preprint"
+    venue: "ECCV 2026"
     selected: y
     image: "/assets/publications/FASR_preview.png"
 
