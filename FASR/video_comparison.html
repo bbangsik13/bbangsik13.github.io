@@ -9,16 +9,16 @@
   <title>Do Flat Minima Improve Sparse Novel View Synthesis?</title>
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="./template/css/bootstrap-4.4.1.css">
+  <link rel="stylesheet" href="./static/css/bootstrap-4.4.1.css">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
-  <link rel="stylesheet" href="./template/css/bulma.min.css">
-  <link rel="stylesheet" href="./template/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./template/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./template/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./template/css/index.css">
+  <link rel="stylesheet" href="./static/css/index.css">
 
-  <link rel="stylesheet" href="./template/css/dics.original.css">
+  <link rel="stylesheet" href="./static/css/dics.original.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
 
   <style>
@@ -61,214 +61,152 @@
               <p style="line-height:140%">Do Flat Minima Improve Sparse Novel View Synthesis?
             </h2>
             </p>
-            <h3 class="title has-text-centered">ECCV 2026</h3>
-            <div class="is-size-5 publication-authors">
-              <hr></span>
-              <span class="author-block">
-                <p style="font-size:23px">
-                  <a href="https://bbangsik13.github.io/">Youngsik Yun</a>,
-                  <a href="https://github.com/dongjunKu/">Dongjun Gu</a>,
-                  <a href="https://vilab.yonsei.ac.kr/members/professor">Youngjung Uh<sup>†</sup></a>
-                </p>
-              </span>
-              <br>
-              <span class="author-block">
-                Yonsei University
-                <div class="is-size-6 publication-authors"><sup>†</sup>Corresponding Author</div>
-            </div>
-            <div class="column has-text-centered">
-              <div class="publication-links">
-                <!-- ArXiv Link. -->
-                <span class="link-block">
-                  <a target="_blank" href="https://arxiv.org/abs/2511.17918"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                    </span>
-                    <span>arXiv</span>
-                  </a>
-                </span>
-                <!-- Code Link. -->
-                <span class="link-block">
-                  <a target="_blank" href="https://github.com/bbangsik13/FASR"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-  </section>
-
-  <section class="hero teaser">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="container has-text-centered">
-          <h2 class="title is-3 has-text-centered" style="margin-top: -30px"></h2>
-          <div class="news-imgWrap">
-            <div class="box" style="box-shadow: none; border: 1px solid #dbdbdb;">
-              <video controls autoplay loop playsinline muted>
-                <source src="./template/resources/teaser.mp4" type="video/mp4">
-              </video>
-            </div>
-            <p><br>While 3DGS achieves high fidelity on training viewpoints, it suffers from floating artifacts in novel
-              viewpoints,
-              <br>
-              indicating <b>poor generalization</b>. Our method enhances rendering quality in novel viewpoints (i.e.,
-              <b>improves generalization</b>).
+            <br>
+            <h2 class="title is-5 guide">
+              <p style="line-height:140%"><u>This page is not optimized for mobile. Please view it on a desktop.</u>
+            </h2>
             </p>
           </div>
-          <br>
-          <br>
-          <br>
         </div>
       </div>
+    </div>
   </section>
-
-
-
 
   <section class="hero teaser">
     <div class="hero-body">
       <div class="container is-max-desktop">
         <div class="container has-text-centered">
-          <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Overview</h2>
-
-          <b>We investigate the relationship between loss sharpness and generalization in novel view
-            synthesis</b>,<br>since pursuing flatter minima is widely known to improve generalization in deep learning.
           <br>
           <br>
-          <div class="box" style="box-shadow: none; border: 1px solid #dbdbdb;">
-            <video controls autoplay loop playsinline muted>
-              <source src="./template/resources/trajectory.mp4" type="video/mp4">
-            </video>
-          </div>
-          However, <b>loss sharpness and generalization are not strictly correlated in novel view synthesis</b>.
           <br>
-          Comparing with Sharpness-Aware Minimization (SAM), a representative flat-minima optimization method,
-          <br>
-          our method converges to sharper minima but achieves lower test loss, indicating better generalization.
-          <br>
-          <br>
-          This is because <b>accurate reconstruction requires sharp minima in high-detail regions (e.g., edges)
-            <br>
-            but flat minima in low-detail regions for better generalization</b>; thus, uniformly pursuing flat minima is
-          problematic.
-          <br>
-          <br>
-          <div class="container has-text-centered">
-            <div class="box" style="box-shadow: none; border: 1px solid #dbdbdb; margin-bottom: 2rem;">
-              <div class="news-imgWrap">
-                <video controls autoplay loop playsinline muted width="100%">
-                  <source src="./template/resources/algorithm.mp4" type="video/mp4">
-                </video>
-              </div>
-            </div>
-            To address this, <b>we introduce structure-aware sharpness and adaptively regularize it:</b>
-            <br>
-            in high-detail regions, we both reduce the regularization weight and the neighborhood radius
-            <br>
-            used for sharpness estimation (i.e., perturbation magnitude), while in low-detail regions, we increase them.
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-          </div>
-        </div>
-      </div>
-  </section>
-
-
-
-
-
-  <section class="hero teaser">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="container has-text-centered">
-          <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Our improvement is complementary to prior
-            methods</h2>
-          <u>Slide to compare videos and click to play or pause</u>
+          <h2 class="title is-3 has-text-centered" style="margin-top: -30px">3DGS-Based Frameworks</h2>
+          <u>Please move the slider in the center to compare the videos.</u>
           <br>
           <br>
           <br>
           <div class="box" style="box-shadow: none; border: 1px solid #dbdbdb; margin-bottom: 2rem;">
+            <!-- <div class="columns">
+          <div class="column is-half"> -->
+            <!-- <div class="video-container" style="width:60%;  margin: 0 auto;">
+              <video class="video" id="xyalias1" loop playsinline autoplay muted src="./static/resources/3DGS_slider_v2.mp4"></video>
+              <canvas id="xyalias1Merge"></canvas>
+            </div>
+            Reduce floater artifacts appearing in the center and left.
+            <br><br> -->
+            <!-- </div> -->
+            <!-- <div class="column is-half"> -->
             <div class="video-container" style="width:60%;  margin: 0 auto;">
               <video class="video" id="xyalias2" loop playsinline autoplay muted
-                src="./template/resources/3DGS_slider.mp4"></video>
+                src="./static/resources/3DGS_slider.mp4"></video>
               <canvas id="xyalias2Merge"></canvas>
             </div>
             Eliminate flickering caused by the Gaussian near the camera.
             <br><br>
+            <!-- </div> -->
+            <!-- </div> -->
+            <!-- <div class="columns"> -->
+            <!-- <div class="column is-half"> -->
             <div class="video-container" style="width:60%;  margin: 0 auto;">
               <video class="video" id="xyalias3" loop playsinline autoplay muted
-                src="./template/resources/CoR-GS_slider.mp4"></video>
+                src="./static/resources/CoR-GS_slider.mp4"></video>
               <canvas id="xyalias3Merge"></canvas>
             </div>
             Prevent sudden appearances of the Gaussian.
             <br><br>
+            <!-- </div> -->
+            <!-- <div class="column is-half"> -->
             <div class="video-container" style="width:60%;  margin: 0 auto;">
               <video class="video" id="xyalias4" loop playsinline autoplay muted
-                src="./template/resources/DropGaussian_slider.mp4"></video>
+                src="./static/resources/DropGaussian_slider.mp4"></video>
               <canvas id="xyalias4Merge"></canvas>
             </div>
             Correct the inaccurate geometry of the cable on the table.
             <br><br>
+            <!-- </div> -->
+            <!-- </div> -->
+            <!-- <div class="columns"> -->
+            <!-- <div class="column is-half"> -->
             <div class="video-container" style="width:60%;  margin: 0 auto;">
               <video class="video" id="xyalias5" loop playsinline autoplay muted
-                src="./template/resources/NexusGS_slider.mp4"></video>
+                src="./static/resources/NexusGS_slider.mp4"></video>
               <canvas id="xyalias5Merge"></canvas>
             </div>
             Remove the floaters appearing in the top-left.
             <br><br>
+            <!-- </div> -->
+            <!-- <div class="column is-half"> -->
             <div class="video-container" style="width:60%;  margin: 0 auto;">
               <video class="video" id="xyalias6" loop playsinline autoplay muted
-                src="./template/resources/SE-GS_slider.mp4"></video>
+                src="./static/resources/SE-GS_slider.mp4"></video>
               <canvas id="xyalias6Merge"></canvas>
             </div>
             Consistent spots on the white concrete pot.
+            <br><br>
+            <!-- </div> -->
+            <!-- </div> -->
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <section class="hero teaser">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="container has-text-centered">
+          <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Other Flat Minima Optimization Method</h2>
+          <div class="box" style="box-shadow: none; border: 1px solid #dbdbdb; margin-bottom: 2rem;">
+            <div class="video-container" style="width:60%;  margin: 0 auto;">
+              <video class="video" id="xyalias1" loop playsinline autoplay muted
+                src="./static/resources/RWP_slider.mp4"></video>
+              <canvas id="xyalias1Merge"></canvas>
+            </div>
+            Remove sudden appearances of the floaters.
+          </div>
+        </div>
+      </div>
+  </section>
 
+  <section class="hero teaser">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="container has-text-centered">
+          <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Dynamic Scene</h2>
+          <div class="box" style="box-shadow: none; border: 1px solid #dbdbdb; margin-bottom: 2rem;">
+            <video class="video" loop playsinline autoplay muted src="./static/resources/dynamic_combined.mp4"></video>
+            Improve temporal consistency of the static background.
+          </div>
+        </div>
+      </div>
+  </section>
 
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code>
-        @misc{yun2025sasr,
-          title={Do Flat Minima Improve Sparse Novel View Synthesis?}, 
-          author={Youngsik Yun and Dongjun Gu and Youngjung Uh},
-          year={2025},
-          eprint={2511.17918},
-          archivePrefix={arXiv},
-          primaryClass={cs.CV},
-          url={https://arxiv.org/abs/2511.17918}, 
-    }
-      </code></pre>
-    </div>
+  <section class="hero teaser">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="container has-text-centered">
+          <h2 class="title is-3 has-text-centered" style="margin-top: -30px">NeRF-Based Framework</h2>
+          <div class="box" style="box-shadow: none; border: 1px solid #dbdbdb; margin-bottom: 2rem;">
+            <div class="video-container" style="width:60%;  margin: 0 auto;">
+              <video class="video" id="xyalias7" loop playsinline autoplay muted
+                src="./static/resources/FreeNeRF_slider.mp4"></video>
+              <canvas id="xyalias7Merge"></canvas>
+            </div>
+            Consistent surface of the fortress.
+          </div>
+        </div>
+      </div>
   </section>
 
 
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="./template/js/fontawesome.all.min.js"></script>
-  <script src="./template/js/bulma-carousel.min.js"></script>
-  <script src="./template/js/bulma-slider.min.js"></script>
-  <script src="./template/js/index.js"></script>
-  <script src="./template/js/app.js"></script>
+  <script src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/app.js"></script>
 
-  <script src="./template/js/event_handler.js"></script>
-  <script src="./template/js/dics.original.js"></script>
+  <script src="./static/js/event_handler.js"></script>
+  <script src="./static/js/dics.original.js"></script>
 
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
