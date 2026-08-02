@@ -1,8 +1,8 @@
 papers:
   - title: "Do Flat Minima Improve Sparse Novel View Synthesis?"
     authors: "<b>Youngsik Yun</b>, Dongjun Gu, Youngjung Uh"
-    # project: "https://bbangsik13.github.io/FASR"
-    # code: "https://github.com/bbangsik13/FASR"
+    project: "https://bbangsik13.github.io/FASR"
+    code: "https://github.com/bbangsik13/SASR"
     paper_pdf: "https://arxiv.org/abs/2511.17918"
     venue: "ECCV 2026"
     selected: y
